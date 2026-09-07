@@ -1,0 +1,45 @@
+@use '../../styles/mixins' as m;
+@use '../../styles/variables' as v;
+
+.controls {
+  position: fixed;
+  top: var(--frame-inset);
+  right: var(--frame-inset);
+  z-index: v.$z-controls;
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  height: calc(var(--frame-inset-top) - var(--frame-inset) - var(--space-2));
+  opacity: 0;
+  animation: controls-in var(--duration-slow) v.$ease-out 120ms forwards;
+}
+
+.button {
+  gap: var(--space-1);
+  padding: var(--space-2);
+}
+
+.code {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: var(--tracking-wide);
+  line-height: 1;
+}
+
+@keyframes controls-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@include m.motion-reduce {
+  .controls {
+    opacity: 1;
+    animation: none;
+  }
+}

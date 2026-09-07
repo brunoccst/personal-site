@@ -1,0 +1,133 @@
+@use '../styles/mixins' as m;
+@use '../styles/variables' as v;
+
+.section {
+  max-width: 68ch;
+}
+
+.kicker {
+  display: block;
+  margin-bottom: var(--space-2);
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+}
+
+.title {
+  margin-bottom: var(--space-5);
+  font-size: var(--text-2xl);
+  font-weight: 300;
+  line-height: var(--leading-tight);
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+.prose {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  color: var(--color-text-muted);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  text-wrap: pretty;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  list-style: none;
+}
+
+// --- Experience entries ---
+
+.entry {
+  padding-left: var(--space-4);
+  border-left: 1px solid var(--color-border);
+}
+
+.period {
+  display: block;
+  margin-bottom: var(--space-1);
+  color: var(--color-text-faint);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+}
+
+.role {
+  font-size: var(--text-lg);
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.organisation {
+  display: block;
+  margin-bottom: var(--space-2);
+  color: var(--color-accent);
+  font-size: var(--text-sm);
+}
+
+.summary {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+}
+
+// --- Link entries ---
+
+.link {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-2) 0;
+  border-radius: var(--radius-sm);
+  transition: color var(--duration-fast) ease;
+
+  &:hover .linkLabel,
+  &:focus-visible .linkLabel {
+    color: var(--color-accent);
+  }
+
+  &:hover .linkLabel::after {
+    width: 100%;
+  }
+}
+
+.linkLabel {
+  position: relative;
+  width: fit-content;
+  color: var(--color-text);
+  font-size: var(--text-lg);
+  font-weight: 400;
+  transition: color var(--duration-fast) ease;
+
+  // Underline that grows on hover.
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-accent);
+    transition: width var(--duration-base) v.$ease-out;
+  }
+}
+
+.linkDescription {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+@include m.below(v.$bp-md) {
+  .title {
+    margin-bottom: var(--space-4);
+  }
+
+  .list {
+    gap: var(--space-4);
+  }
+}

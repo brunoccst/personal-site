@@ -1,1 +1,0 @@
-export type SectionType = "about" | "experience" | "links";

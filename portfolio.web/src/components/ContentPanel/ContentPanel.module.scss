@@ -1,0 +1,74 @@
+@use '../../styles/mixins' as m;
+@use '../../styles/variables' as v;
+
+$swap-duration: 220ms;
+$travel: 14px;
+
+.panel {
+  min-height: 0;
+  min-width: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  padding-right: var(--space-3);
+
+  @include m.themed-scrollbar;
+}
+
+.slide {
+  &[data-phase='enter'] {
+    animation: slide-in $swap-duration + 160ms v.$ease-out forwards;
+  }
+
+  &[data-phase='exit'] {
+    animation: slide-out $swap-duration v.$ease-in forwards;
+  }
+
+  // Moving backwards mirrors the vertical direction of the animation.
+  &[data-direction='back'] {
+    --slide-from: #{-$travel};
+    --slide-to: #{$travel};
+  }
+
+  &[data-direction='forward'] {
+    --slide-from: #{$travel};
+    --slide-to: #{-$travel};
+  }
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--slide-from));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(var(--slide-to));
+  }
+}
+
+@include m.below(v.$bp-md) {
+  .panel {
+    padding-right: var(--space-2);
+  }
+}
+
+@include m.motion-reduce {
+  .slide[data-phase='enter'],
+  .slide[data-phase='exit'] {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}

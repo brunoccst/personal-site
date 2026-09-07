@@ -1,0 +1,118 @@
+@use '../../styles/mixins' as m;
+@use '../../styles/variables' as v;
+
+.nav {
+  min-width: 0;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  list-style: none;
+}
+
+.item {
+  opacity: 0;
+  // Each entry starts 70ms after the previous one.
+  animation: item-in var(--duration-slow) v.$ease-out forwards;
+  animation-delay: calc(220ms + var(--item-index) * 70ms);
+}
+
+.link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-2) var(--space-2) 0;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  transition: color var(--duration-fast) ease;
+
+  &:hover {
+    color: var(--color-text);
+  }
+
+  &:hover .anchor {
+    width: 1.25rem;
+    background-color: var(--color-text-muted);
+  }
+}
+
+// Short rule that grows into a full anchor for the active entry.
+.anchor {
+  flex: none;
+  width: 0.75rem;
+  height: 1px;
+  background-color: var(--color-border-strong);
+  transition:
+    width var(--duration-base) v.$ease-out,
+    background-color var(--duration-fast) ease;
+}
+
+.label {
+  min-width: 0;
+}
+
+// `aria-current` is set by NavLink on the active route.
+.link[aria-current='page'] {
+  color: var(--color-accent);
+  font-weight: 600;
+
+  .anchor {
+    width: 2.5rem;
+    background-color: var(--color-accent);
+  }
+}
+
+@keyframes item-in {
+  from {
+    opacity: 0;
+    transform: translateX(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+// Below the medium breakpoint the navigation becomes a horizontal row and the
+// anchor moves underneath the label.
+@include m.below(v.$bp-md) {
+  .list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+
+  .link {
+    flex-direction: column-reverse;
+    gap: var(--space-2);
+    padding: var(--space-1) 0;
+    font-size: var(--text-xs);
+  }
+
+  .anchor {
+    align-self: stretch;
+    width: auto;
+  }
+
+  .link:hover .anchor {
+    width: auto;
+  }
+
+  .link[aria-current='page'] .anchor {
+    width: auto;
+    height: 2px;
+  }
+}
+
+@include m.motion-reduce {
+  .item {
+    opacity: 1;
+    animation: none;
+  }
+}

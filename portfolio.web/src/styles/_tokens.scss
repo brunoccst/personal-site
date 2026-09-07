@@ -1,0 +1,85 @@
+// CSS custom properties. `:root` holds the light theme; `[data-theme='dark']`
+// overrides the colours that differ. Both themes are dark-toned.
+
+:root {
+  // --- Light theme: grey background ---
+  --color-bg: #16181b;
+  --color-bg-elevated: #1c1f23;
+  --color-bg-sunken: #101215;
+  --color-border: rgb(255 255 255 / 9%);
+  --color-border-strong: rgb(255 255 255 / 20%);
+  --color-text: #eceded;
+  --color-text-muted: #a2a6ad;
+  --color-text-faint: #868b93;
+  --color-accent: #c9a86a;
+  --color-accent-contrast: #16181b;
+  --color-accent-soft: rgb(201 168 106 / 12%);
+  --color-focus: #e0c48c;
+
+  // --- Spacing scale ---
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+
+  // --- Radii ---
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: clamp(0.75rem, 1.2vmin, 1.25rem);
+
+  // --- Type ---
+  --font-sans: 'Segoe UI Variable Display', 'Segoe UI', ui-sans-serif, system-ui,
+    -apple-system, Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Mono', 'Segoe UI Mono', 'SF Mono',
+    Consolas, 'Liberation Mono', monospace;
+
+  --text-xs: clamp(0.6875rem, 0.66rem + 0.14vw, 0.75rem);
+  --text-sm: clamp(0.8125rem, 0.78rem + 0.16vw, 0.875rem);
+  --text-base: clamp(0.9375rem, 0.9rem + 0.2vw, 1.0625rem);
+  --text-lg: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  --text-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.75rem);
+  --text-2xl: clamp(1.5rem, 1.15rem + 1.75vw, 2.5rem);
+  --text-display: clamp(1.125rem, 3.05vw, 3.25rem);
+
+  --leading-tight: 1.2;
+  --leading-snug: 1.4;
+  --leading-normal: 1.7;
+  --tracking-wide: 0.08em;
+  --tracking-wider: 0.16em;
+
+  // --- Frame geometry ---
+  // The top inset is larger than the others: it is the band that holds the
+  // system controls sitting outside the frame.
+  --frame-inset: clamp(0.875rem, 3.2vmin, 2.75rem);
+  --frame-inset-top: clamp(3.25rem, 4vmin + 2.25rem, 5rem);
+  --frame-padding: clamp(1.125rem, 3vmin, 2.75rem);
+  --frame-max-width: 1440px;
+
+  // --- Motion ---
+  --duration-fast: 160ms;
+  --duration-base: 280ms;
+  --duration-slow: 520ms;
+  --duration-intro: 900ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+}
+
+[data-theme='dark'] {
+  // --- Dark theme: pure black background ---
+  --color-bg: #000000;
+  --color-bg-elevated: #0a0b0c;
+  --color-bg-sunken: #000000;
+  --color-border: rgb(255 255 255 / 8%);
+  --color-border-strong: rgb(255 255 255 / 18%);
+  --color-text: #f4f4f5;
+  --color-text-muted: #9b9ba3;
+  --color-text-faint: #828289;
+  --color-accent: #d8b878;
+  --color-accent-contrast: #000000;
+  --color-accent-soft: rgb(216 184 120 / 12%);
+  --color-focus: #ecd6a4;
+}
