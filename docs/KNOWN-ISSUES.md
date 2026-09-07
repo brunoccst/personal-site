@@ -140,6 +140,23 @@ frame. If the buttons are ever made larger, the token has to be raised by hand
 or the controls will overlap the frame border. Nothing enforces the
 relationship.
 
+### The control alignment depends on a duplicated padding value
+
+The last control's negative right margin has to equal the button's own padding
+for the icon to line up with the frame border. The padding is set in the MUI
+theme and the margin in the stylesheet, both as `var(--space-2)`. They agree
+today because they name the same token, but nothing fails if one is changed
+alone.
+
+### Entrance animations leave elements invisible while paused
+
+The heading, navigation and frame all start at `opacity: 0` and are revealed by
+a CSS animation. A browser that pauses animations — Chrome does this for tabs
+that are never painted — leaves those elements invisible rather than showing
+them unanimated. It resolves as soon as the tab is displayed, so a real visitor
+is unlikely to see it, but automated screenshots of a hidden viewport catch it
+consistently.
+
 ---
 
 ## Accessibility
@@ -150,11 +167,17 @@ relationship.
 with the keyboard. When the section is short enough not to scroll, that is a tab
 stop that does nothing.
 
-### The scroll hint is invisible to screen readers
+### Nothing tells anyone that scrolling changes section
 
-The "Scroll or use the arrow keys" hint is `aria-hidden`, so a screen reader user
-is never told that scrolling changes section. The arrow keys work, but they are
-undiscoverable without sight of the hint.
+The on-screen hint that used to say so has been removed. The wheel, arrow keys
+and swipes all still change section, and the side navigation is the only clue
+that more sections exist. Nobody is told how to reach them without clicking.
+
+### The intro cannot be skipped
+
+The skip button and the <kbd>Esc</kbd> handler are gone, so every visitor waits
+about four seconds before the content appears, on every full page load. Only the
+reduced-motion preference bypasses it.
 
 ### Reduced motion removes the intro rather than simplifying it
 

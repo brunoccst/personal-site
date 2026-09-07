@@ -1,18 +1,16 @@
 @use '../../styles/mixins' as m;
 @use '../../styles/variables' as v;
 
-// Distance the two halves travel while entering and leaving.
-$travel: 1.6em;
-$enter-delay: 150ms;
-$enter-duration: 900ms;
-$exit-duration: 700ms;
+$enter-delay: 200ms;
+$enter-duration: 1200ms;
+$exit-duration: 900ms;
+$separator-duration: 600ms;
 
 .intro {
   position: fixed;
   inset: 0;
   z-index: v.$z-intro;
   display: grid;
-  grid-template-rows: 1fr auto;
   place-items: center;
   padding: var(--space-6);
   background-color: var(--color-bg);
@@ -21,12 +19,11 @@ $exit-duration: 700ms;
   &[data-phase='exit'] {
     // The page underneath is already fading in, so it takes the clicks.
     pointer-events: none;
-    animation: backdrop-out $exit-duration v.$ease-in forwards;
+    animation: backdrop-out $exit-duration linear forwards;
   }
 }
 
 .line {
-  grid-row: 1;
   display: flex;
   align-items: baseline;
   justify-content: center;
@@ -39,6 +36,14 @@ $exit-duration: 700ms;
   text-align: center;
 }
 
+// Window the text slides through. Clipping horizontally at the text's own edges
+// keeps each half from ever crossing the separator; the negative vertical
+// insets let ascenders and descenders show.
+.mask {
+  display: inline-block;
+  clip-path: inset(-0.4em 0 -0.4em 0);
+}
+
 .name,
 .role {
   display: block;
@@ -49,18 +54,22 @@ $exit-duration: 700ms;
 
 .name {
   color: var(--color-text);
+  // Starts tucked behind the separator, to its right.
+  transform: translateX(100%);
 }
 
 .role {
   color: var(--color-text-muted);
   font-weight: 300;
+  // Starts tucked behind the separator, to its left.
+  transform: translateX(-100%);
 }
 
 .separatorGlyph {
   color: var(--color-accent);
   font-weight: 200;
   opacity: 0;
-  transform: scaleY(0.3);
+  transform: scaleY(0.4);
   transform-origin: center;
 }
 
@@ -71,27 +80,10 @@ $exit-duration: 700ms;
   height: 1px;
   background-color: var(--color-accent);
   opacity: 0;
-  transform: scaleX(0.3);
+  transform: scaleX(0.4);
 }
 
-.skip {
-  grid-row: 2;
-  padding: var(--space-2) var(--space-4);
-  color: var(--color-text-faint);
-  font-size: var(--text-xs);
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
-  border-radius: var(--radius-md);
-  opacity: 0;
-  animation: fade-in 400ms v.$ease-out 1600ms forwards;
-  transition: color var(--duration-fast) ease;
-
-  &:hover {
-    color: var(--color-text);
-  }
-}
-
-// --- Entering ---
+// --- Entering: the separator draws first, then both halves slide out of it ---
 
 .intro[data-phase='enter'] {
   .name {
@@ -104,35 +96,35 @@ $exit-duration: 700ms;
 
   .separatorGlyph,
   .separatorBar {
-    animation: separator-in 500ms v.$ease-out forwards;
+    animation: separator-in $separator-duration v.$ease-out forwards;
   }
 }
 
-// --- Leaving: each half continues past the edge it came from ---
+// --- Leaving: the reverse, both halves sliding back into the separator ---
 
 .intro[data-phase='exit'] {
   .name {
-    animation: name-out $exit-duration v.$ease-in forwards;
+    animation: name-out $exit-duration v.$ease-in-out forwards;
   }
 
   .role {
-    animation: role-out $exit-duration v.$ease-in forwards;
+    animation: role-out $exit-duration v.$ease-in-out forwards;
   }
 
+  // Holds until the text is back inside, then clears.
   .separatorGlyph,
   .separatorBar {
-    animation: separator-out $exit-duration v.$ease-in forwards;
-  }
-
-  .skip {
-    animation: fade-out 200ms linear forwards;
+    animation: separator-out 500ms v.$ease-in-out 400ms forwards;
   }
 }
 
 @keyframes name-in {
   from {
     opacity: 0;
-    transform: translateX($travel);
+    transform: translateX(100%);
+  }
+  55% {
+    opacity: 1;
   }
   to {
     opacity: 1;
@@ -143,7 +135,10 @@ $exit-duration: 700ms;
 @keyframes role-in {
   from {
     opacity: 0;
-    transform: translateX(-$travel);
+    transform: translateX(-100%);
+  }
+  55% {
+    opacity: 1;
   }
   to {
     opacity: 1;
@@ -156,9 +151,12 @@ $exit-duration: 700ms;
     opacity: 1;
     transform: translateX(0);
   }
+  45% {
+    opacity: 1;
+  }
   to {
     opacity: 0;
-    transform: translateX(-$travel);
+    transform: translateX(100%);
   }
 }
 
@@ -167,16 +165,19 @@ $exit-duration: 700ms;
     opacity: 1;
     transform: translateX(0);
   }
+  45% {
+    opacity: 1;
+  }
   to {
     opacity: 0;
-    transform: translateX($travel);
+    transform: translateX(-100%);
   }
 }
 
 @keyframes separator-in {
   from {
     opacity: 0;
-    transform: scaleY(0.3) scaleX(0.3);
+    transform: scaleY(0.4) scaleX(0.4);
   }
   to {
     opacity: 1;
@@ -187,26 +188,14 @@ $exit-duration: 700ms;
 @keyframes separator-out {
   to {
     opacity: 0;
-    transform: scaleY(0.3) scaleX(0.3);
+    transform: scaleY(0.4) scaleX(0.4);
   }
 }
 
-@keyframes fade-in {
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fade-out {
-  to {
-    opacity: 0;
-  }
-}
-
-// Holds the backdrop solid while the text flies out, then clears it.
+// Holds the backdrop solid while the text slides back, then clears it.
 @keyframes backdrop-out {
   0%,
-  50% {
+  70% {
     opacity: 1;
   }
   100% {

@@ -1,12 +1,14 @@
 import { createTheme, type Theme } from '@mui/material/styles';
 
+import type { ThemeMode } from './themeContext';
+
 // Builds the Material UI theme. Colours are read from the CSS custom properties
 // defined in `styles/_tokens.scss`, which change with the `data-theme`
-// attribute, so one theme object covers both modes.
-export function createAppTheme(): Theme {
+// attribute. Only `palette.mode` depends on the argument.
+export function createAppTheme(mode: ThemeMode): Theme {
   return createTheme({
     palette: {
-      mode: 'dark',
+      mode,
       background: {
         default: 'var(--color-bg)',
         paper: 'var(--color-bg-elevated)',
@@ -36,6 +38,9 @@ export function createAppTheme(): Theme {
               outlineOffset: '2px',
             },
           },
+          // Set here rather than in a stylesheet because MUI's own sizeSmall
+          // rule would otherwise win on specificity.
+          sizeSmall: { padding: 'var(--space-2)' },
         },
       },
       MuiTooltip: {

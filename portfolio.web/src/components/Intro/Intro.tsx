@@ -5,9 +5,9 @@ import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion';
 import styles from './Intro.module.scss';
 
 // Milliseconds from mount until the text starts leaving.
-const EXIT_AT_MS = 3000;
+const EXIT_AT_MS = 3200;
 // Length of the leaving animation, matching `$exit-duration` in the stylesheet.
-const EXIT_DURATION_MS = 700;
+const EXIT_DURATION_MS = 900;
 
 type Phase = 'enter' | 'exit';
 
@@ -44,32 +44,26 @@ export function Intro({ onExitStart, onFinish }: IntroProps) {
     };
   }, [prefersReducedMotion, onExitStart, onFinish]);
 
-  // Escape ends the intro early.
-  useEffect(() => {
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') onFinish();
-    };
-
-    window.addEventListener('keydown', onKeyDown);
-    return () => window.removeEventListener('keydown', onKeyDown);
-  }, [onFinish]);
-
   if (prefersReducedMotion) return null;
 
   return (
     <div className={styles.intro} data-phase={phase}>
       <p className={styles.line}>
-        <span className={styles.name}>{t('identity.name')}</span>
+        {/* Each half is clipped to its own box, so it stays behind the
+            separator until it has slid out. */}
+        <span className={styles.mask}>
+          <span className={styles.name}>{t('identity.name')}</span>
+        </span>
+
         <span className={styles.separatorGlyph} aria-hidden="true">
           {t('identity.separator')}
         </span>
         <span className={styles.separatorBar} aria-hidden="true" />
-        <span className={styles.role}>{t('identity.role')}</span>
-      </p>
 
-      <button type="button" className={styles.skip} onClick={onFinish}>
-        {t('intro.skip')}
-      </button>
+        <span className={styles.mask}>
+          <span className={styles.role}>{t('identity.role')}</span>
+        </span>
+      </p>
     </div>
   );
 }

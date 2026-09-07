@@ -104,9 +104,14 @@ Inside the frame:
 
 ### The intro
 
-`components/Intro/Intro.tsx` covers the screen when the app first mounts. It
-shows the name and the role sliding out of the `|` character between them, waits
-three seconds, then sends them back out in opposite directions.
+`components/Intro/Intro.tsx` covers the screen when the app first mounts.
+
+The name and the role each sit inside a mask element that is exactly as wide as
+the text. Each half starts pushed fully outside its own mask — the name to the
+right, the role to the left — which hides it behind the `|` between them. They
+then slide to `translateX(0)`. Because the mask stays put while the text moves
+inside it, neither half can ever cross the separator. After a pause the
+animation reverses and both slide back into the `|`.
 
 `App.tsx` tracks the intro with a `stage` value:
 
@@ -115,7 +120,8 @@ three seconds, then sends them back out in opposite directions.
    the two cross-fade.
 3. `done` — the intro is removed from the React tree.
 
-Pressing <kbd>Esc</kbd> or the skip button jumps straight to `done`.
+The intro runs for about four seconds and cannot be skipped. It is dropped
+entirely when the operating system asks for reduced motion.
 
 ### Moving between sections
 
@@ -185,8 +191,8 @@ Import a shared file with `@use`:
 
 ### Themes
 
-Both themes are dark. The light theme uses a grey background, the dark theme a
-pure black one.
+The light theme uses a warm off-white background with a muted bronze accent. The
+dark theme uses a pure black background with a soft gold accent.
 
 `theme/AppThemeProvider.tsx` writes the current mode onto the `<html>` element as
 `data-theme="light"` or `data-theme="dark"`. `_tokens.scss` defines the light

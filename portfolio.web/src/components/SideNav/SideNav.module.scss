@@ -37,12 +37,12 @@
   }
 
   &:hover .anchor {
-    width: 1.25rem;
+    width: 1.1rem;
     background-color: var(--color-text-muted);
   }
 }
 
-// Short rule that grows into a full anchor for the active entry.
+// Short rule that grows to twice its length for the active entry.
 .anchor {
   flex: none;
   width: 0.75rem;
@@ -63,7 +63,7 @@
   font-weight: 600;
 
   .anchor {
-    width: 2.5rem;
+    width: 1.5rem;
     background-color: var(--color-accent);
   }
 }
