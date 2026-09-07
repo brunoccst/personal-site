@@ -128,8 +128,7 @@ return sweep, which is why every typographic reference recommends 45–75. On a
 space to the right of the text is the cost, and it reads as intentional margin
 rather than as a bug.
 
-This will fill in once real content with images and icons replaces the
-placeholder text.
+This will fill in further once images and icons join the text.
 
 ### The system controls share the frame's geometry
 
@@ -410,3 +409,82 @@ form, because Rollup's current types only accept a function.
 
 Netlify runs the build. Committing build output creates noisy diffs and lets the
 published site drift from the source.
+
+---
+
+## Content
+
+### The CV is the only source
+
+The section text was written from `CV_BrunoCarvalhoDaCosta.pdf`. A cross-check
+against the LinkedIn profile was intended but not possible: the profile is
+served behind a login wall, and an unauthenticated fetch returns a sign-in page
+with no profile content on it.
+
+That matters for how much the content can be trusted. Nothing here is
+corroborated, so the site inherits whatever the CV has out of date — including
+the job title, which the CV gives as "Software Engineer" while the site heading
+says "Software Engineer & Team Lead". The experience entry follows the CV
+because inventing a title and a start date would be worse than showing a stale
+one. See [KNOWN-ISSUES.md](KNOWN-ISSUES.md).
+
+### No direct contact details anywhere
+
+The CV carries a mobile number, a home address and an email address. None of the
+three is on the site, and none is in the repository.
+
+A portfolio is a public, indexed page. A home address on one is a personal
+safety question rather than a privacy preference, and a phone number attracts
+recruiters and spam callers indefinitely, with no way to withdraw it once it has
+been scraped. The email was included at first, on the reasoning that some direct
+route to make contact is the point of the Links section; it was then removed on
+request. The same scraping argument applies to it, and LinkedIn already provides
+a contact route that can be closed off later.
+
+The practical consequence is that the only ways to reach the site's owner are
+LinkedIn and GitHub. That is deliberate, not an oversight.
+
+### Locations are given at country level only
+
+The CV names a city of residence, and each role carries the town its employer
+sits in. On the site all of that is reduced to "Germany" or "Brazil".
+
+Withholding a street address achieves little if the surrounding prose still
+names the city, and two employer towns in the same metropolitan area narrow it
+just as effectively as stating it outright. Country level is the coarsest
+granularity that still carries the useful signal — which market someone works
+in, and that the move from Brazil actually happened.
+
+The city where the career began was removed from the prose too, on request, even
+though it is past tense and does not describe where anyone lives now.
+
+One reference to that region survives: the university is still named. It is an
+education credential with real professional value, which puts it in a different
+category from a place of residence, so it was left for its owner to decide on.
+It does undercut the removal, though — the university is in the city that was
+just taken out, and one search closes the gap. The choice is between naming the
+degree and withholding the region; it cannot be both.
+
+The cost of all of this is city-level matching in recruiter searches, which is a
+real loss and was accepted knowingly.
+
+### Experience entries gained `location` and `stack`
+
+The CV gives each role a place and a list of technologies. Dropping them would
+have thrown away most of what distinguishes one entry from another, so
+`ExperienceItem` grew two fields. The technology names stay in English in both
+locales — they are product names, not vocabulary.
+
+### `LinksSection` still handles `mailto:`, with no `mailto:` to handle
+
+`LinksSection` marks external links with `target="_blank"`, `rel="noopener
+noreferrer"` and a hidden "(opens in a new tab)". A `mailto:` link hands off to a
+mail client rather than opening a tab, so `isExternal` excludes it from all
+three: announcing a tab that never appears is worse than saying nothing.
+
+No `mailto:` entry survives, so that branch is currently unreachable. It was
+kept rather than deleted because it encodes a rule about how links render, not a
+special case for one row. The link entries are data in the locale files, which
+is where a mail address would be added back, and adding one there should not
+require also remembering to change a component. Deleting the branch would make
+that a silent accessibility bug the next time.

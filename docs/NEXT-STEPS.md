@@ -5,19 +5,21 @@ listed in [KNOWN-ISSUES.md](KNOWN-ISSUES.md).
 
 ---
 
-## 1. Real content
+## 1. Confirm the content
 
-The site cannot ship with lorem ipsum, so this comes first.
+The lorem ipsum is gone; every section is now written from the CV. What remains
+is verification, because the CV was the only source available.
 
-- Replace `sections.about.paragraphs` in both locale files with the real text.
-- Replace `sections.experience.items` with real roles, organisations and dates.
-  The field shape (`period`, `role`, `organisation`, `summary`) already exists;
-  add fields to it if the real entries need more, and update the interface in
-  `ExperienceSection.tsx` to match.
-- Replace `sections.links.items` with real destinations. Decide at that point
-  whether each entry needs an icon.
-- Remove the `kicker` values, which currently read "Placeholder content".
-- Write the Portuguese text as a translation, not a copy of the English.
+- Settle the job title. The heading says "Software Engineer & Team Lead", the CV
+  says "Software Engineer". If the lead role is current, update the DocuWare
+  entry in both locale files and add its start date.
+- Read the Portuguese as a native speaker would. It is a translation rather than
+  a copy, but the register was chosen without a second opinion.
+- Check the DocuWare stack list still matches what the work actually involves.
+- Decide whether LinkedIn and GitHub are enough. No contact details appear
+  anywhere on the site — phone, address and email were all deliberately left off
+  a public page — so those two profiles are the only routes in. A contact form
+  backed by a form service would add a third without publishing an address.
 
 ## 2. Images and icons
 
