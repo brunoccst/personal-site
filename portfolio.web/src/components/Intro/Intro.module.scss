@@ -6,6 +6,20 @@ $enter-duration: 1200ms;
 $exit-duration: 900ms;
 $separator-duration: 600ms;
 
+// Space between each half and the separator.
+$gap: 0.45em;
+// How far each mask reaches past its own box towards the separator. It spans
+// the gap exactly, so the clip edge lands on the separator instead of leaving a
+// visible cut in the empty space beside it.
+$reach: $gap;
+// Vertical slack so ascenders and descenders are never clipped.
+$bleed-y: 0.4em;
+
+// Negated up front. Written inline, a leading `-` next to another value is
+// parsed by Sass as subtraction rather than as a negative number.
+$bleed-y-neg: -$bleed-y;
+$reach-neg: -$reach;
+
 .intro {
   position: fixed;
   inset: 0;
@@ -27,7 +41,7 @@ $separator-duration: 600ms;
   display: flex;
   align-items: baseline;
   justify-content: center;
-  gap: 0.45em;
+  gap: $gap;
   max-width: 100%;
   font-size: var(--text-display);
   font-weight: 300;
@@ -36,12 +50,21 @@ $separator-duration: 600ms;
   text-align: center;
 }
 
-// Window the text slides through. Clipping horizontally at the text's own edges
-// keeps each half from ever crossing the separator; the negative vertical
-// insets let ascenders and descenders show.
+// Window the text slides through. The outer side clips at the text's own edge;
+// the separator side reaches across the gap so the text appears from the pipe
+// itself instead of from a line beside it.
 .mask {
   display: inline-block;
-  clip-path: inset(-0.4em 0 -0.4em 0);
+}
+
+// The half to the left of the separator: reaches right.
+.maskStart {
+  clip-path: inset(#{$bleed-y-neg} #{$reach-neg} #{$bleed-y-neg} 0);
+}
+
+// The half to the right of the separator: reaches left.
+.maskEnd {
+  clip-path: inset(#{$bleed-y-neg} 0 #{$bleed-y-neg} #{$reach-neg});
 }
 
 .name,
@@ -55,14 +78,22 @@ $separator-duration: 600ms;
 .name {
   color: var(--color-text);
   // Starts tucked behind the separator, to its right.
-  transform: translateX(100%);
+  transform: translateX(calc(100% + #{$reach}));
 }
 
 .role {
   color: var(--color-text-muted);
   font-weight: 300;
   // Starts tucked behind the separator, to its left.
-  transform: translateX(-100%);
+  transform: translateX(calc(-100% - #{$reach}));
+}
+
+// Sits above both masks, so the halves slide out from behind it rather than
+// over it.
+.separatorGlyph,
+.separatorBar {
+  position: relative;
+  z-index: 1;
 }
 
 .separatorGlyph {
@@ -121,7 +152,7 @@ $separator-duration: 600ms;
 @keyframes name-in {
   from {
     opacity: 0;
-    transform: translateX(100%);
+    transform: translateX(calc(100% + #{$reach}));
   }
   55% {
     opacity: 1;
@@ -135,7 +166,7 @@ $separator-duration: 600ms;
 @keyframes role-in {
   from {
     opacity: 0;
-    transform: translateX(-100%);
+    transform: translateX(calc(-100% - #{$reach}));
   }
   55% {
     opacity: 1;
@@ -156,7 +187,7 @@ $separator-duration: 600ms;
   }
   to {
     opacity: 0;
-    transform: translateX(100%);
+    transform: translateX(calc(100% + #{$reach}));
   }
 }
 
@@ -170,7 +201,7 @@ $separator-duration: 600ms;
   }
   to {
     opacity: 0;
-    transform: translateX(-100%);
+    transform: translateX(calc(-100% - #{$reach}));
   }
 }
 

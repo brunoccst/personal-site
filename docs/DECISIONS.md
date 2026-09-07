@@ -279,23 +279,43 @@ The first version translated each half outward from the separator by a fixed
 full, so at the start of the animation "Costa" sat directly on top of "Software"
 and the two halves visibly crossed the `|`.
 
-The fix is a mask. Each half is wrapped in a `.mask` span that stays at the
-text's final position and clips to it:
+The fix is a mask. Each half is wrapped in a span that stays at the text's final
+position and clips to it. The text inside starts fully outside its own mask —
+`translateX(100%)` for the name, `translateX(-100%)` for the role — and animates
+to `translateX(0)`. Because the mask never moves, no part of either half can
+appear on the wrong side of the `|`. The constraint is geometric rather than a
+matter of tuning a distance.
+
+Clipping at the text's own edge was not enough on its own. The halves are
+separated from the `|` by a `0.45em` flex gap, so the clip edge sat that far
+from the character and the text appeared out of thin air beside it — which read
+as an invisible box around the separator. Each mask now reaches across the gap:
 
 ```scss
-.mask {
-  display: inline-block;
-  clip-path: inset(-0.4em 0 -0.4em 0);
+$gap: 0.45em;
+$reach: $gap;
+
+.maskStart {
+  clip-path: inset(-0.4em (-$reach) -0.4em 0);
 }
 ```
 
-The text inside starts at `translateX(100%)` (the name) or `translateX(-100%)`
-(the role), which puts it entirely outside its own mask, tucked behind the
-separator, and animates to `translateX(0)`. Because the mask never moves, no
-part of either half can appear on the wrong side of the `|` — the constraint is
-geometric rather than a matter of tuning a distance.
+The start offsets grow to match (`translateX(calc(100% + #{$reach}))`), so the
+text is still fully hidden at rest. The clip edge now lands on the separator
+itself, and the text emerges from the character rather than from the space next
+to it.
 
-The negative vertical insets matter: `inset(0 ...)` would clip ascenders and
+Two details make that safe:
+
+- The separator is given `position: relative; z-index: 1`. `clip-path` creates a
+  stacking context, so without this the second mask — later in the DOM — would
+  paint its text over the pipe. Raised, the pipe stays on top and the halves
+  slide out from behind it.
+- `$reach` equals the gap exactly, no more. The pipe's own box is only about
+  `0.19em` wide, so overshooting by even `0.08em` puts the masks over most of
+  the character.
+
+The negative vertical insets matter too: `inset(0 ...)` would clip ascenders and
 descenders flat. Negative values let the text overflow vertically while still
 being clipped horizontally.
 
