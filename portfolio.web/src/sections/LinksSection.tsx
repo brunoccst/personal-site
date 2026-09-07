@@ -9,6 +9,11 @@ interface LinkItem {
   href: string;
 }
 
+// Mail links open the visitor's mail client rather than a new tab.
+function isExternal(href: string): boolean {
+  return !href.startsWith('mailto:');
+}
+
 export default function LinksSection() {
   const { t } = useTranslation();
   const items = useTranslatedList<LinkItem>('sections.links.items');
@@ -19,22 +24,28 @@ export default function LinksSection() {
       <h2 className={styles.title}>{t('sections.links.title')}</h2>
 
       <ul className={styles.list}>
-        {items.map((item) => (
-          <li key={item.href + item.label}>
-            <a
-              className={styles.link}
-              href={item.href}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span className={styles.linkLabel}>
-                {item.label}
-                <span className="visually-hidden"> {t('a11y.opensInNewTab')}</span>
-              </span>
-              <span className={styles.linkDescription}>{item.description}</span>
-            </a>
-          </li>
-        ))}
+        {items.map((item) => {
+          const external = isExternal(item.href);
+
+          return (
+            <li key={item.href + item.label}>
+              <a
+                className={styles.link}
+                href={item.href}
+                target={external ? '_blank' : undefined}
+                rel={external ? 'noopener noreferrer' : undefined}
+              >
+                <span className={styles.linkLabel}>
+                  {item.label}
+                  {external && (
+                    <span className="visually-hidden"> {t('a11y.opensInNewTab')}</span>
+                  )}
+                </span>
+                <span className={styles.linkDescription}>{item.description}</span>
+              </a>
+            </li>
+          );
+        })}
       </ul>
     </article>
   );

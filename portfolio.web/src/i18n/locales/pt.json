@@ -31,55 +31,103 @@
   "sections": {
     "about": {
       "title": "Sobre mim",
-      "kicker": "Conteúdo provisório",
+      "kicker": "Alemanha",
       "paragraphs": [
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at libero eget augue tincidunt tempor. Vivamus in orci a ligula pretium volutpat vitae quis nunc. Suspendisse potenti, mauris eget aliquam facilisis, arcu tellus tempus dui.",
-        "Curabitur sodales, ipsum non porttitor tincidunt, urna nisi vestibulum enim, sit amet consequat eros nibh in massa. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante, etiam sit amet orci eget eros faucibus tincidunt.",
-        "Praesent metus tellus, elementum eu, semper a, adipiscing nec, purus. Cras risus ipsum, faucibus ut, ullamcorper id, varius ac, leo. Suspendisse feugiat, aenean posuere, tortor sed cursus feugiat nunc augue blandit nunc."
+        "Sou engenheiro de software e moro na Alemanha. Nasci no Brasil e comecei a carreira por lá; aos 21 anos, um antigo empregador me convidou para trabalhar na sede alemã, e estou por aqui desde então.",
+        "Trabalho com a stack inteira, mas é no front-end que me sinto mais em casa. Na DocuWare, faço parte do time de Client Solutions, mantendo e desenvolvendo as soluções que dão suporte ao produto principal — em geral ASP.NET Core e F# no back-end, React e TypeScript no front, rodando no Azure.",
+        "Sou comunicativo e gosto de trabalhar em equipe; acredito que juntos somos mais fortes. Procuro ser organizado e gosto de compartilhar o que sei. Sou bacharel em Ciência da Computação pela PUCRS e falo português como língua materna e inglês fluente, além de espanhol e alemão.",
+        "Longe do teclado, costumo estar tocando guitarra, jogando, assistindo a uma série ou tomando um mate no parque. Minhas melhores lembranças são as que têm minha família e meus amigos por perto. Se eu tornei a vida de alguém melhor, então valeu a pena."
       ]
     },
     "experience": {
       "title": "Experiência",
-      "kicker": "Conteúdo provisório",
+      "kicker": "2014 — presente",
       "items": [
         {
-          "period": "Lorem 2022 — Ipsum",
-          "role": "Dolor Sit Amet",
-          "organisation": "Consectetur Adipiscing",
-          "summary": "Vivamus in orci a ligula pretium volutpat vitae quis nunc. Suspendisse potenti, mauris eget aliquam facilisis, arcu tellus tempus dui, quis vestibulum leo mauris nec ligula."
+          "period": "Nov 2020 — Atual",
+          "role": "Engenheiro de Software",
+          "organisation": "DocuWare",
+          "location": "Alemanha",
+          "summary": "Faço parte do time de Client Solutions, mantendo e desenvolvendo as diversas soluções que dão suporte ao produto principal e aos clientes que o utilizam.",
+          "stack": [
+            "ASP.NET Core",
+            "F#",
+            "React",
+            "TypeScript",
+            "SCSS",
+            "StencilJS",
+            "Microsoft Azure",
+            "Azure DevOps",
+            "Terraform",
+            "Microsserviços"
+          ]
         },
         {
-          "period": "Lorem 2019 — 2022",
-          "role": "Elit Tempor",
-          "organisation": "Integer Libero",
-          "summary": "Curabitur sodales, ipsum non porttitor tincidunt, urna nisi vestibulum enim, sit amet consequat eros nibh in massa. Donec vitae sapien ut libero venenatis faucibus."
+          "period": "Mai 2016 — Nov 2020",
+          "role": "Engenheiro de Software",
+          "organisation": "MECOMO AG",
+          "location": "Alemanha",
+          "summary": "Desenvolvedor full-stack em uma solução de telemetria, num time global entre Brasil e Alemanha. Entrei pelo escritório brasileiro e depois fui convidado a me mudar para a sede.",
+          "stack": [
+            "ASP.NET Framework",
+            "ASP.NET MVC",
+            "C#",
+            "Microsoft SQL Server",
+            "JavaScript",
+            "jQuery",
+            "Bootstrap",
+            "Web Forms",
+            "Team Foundation Server"
+          ]
         },
         {
-          "period": "Lorem 2016 — 2019",
-          "role": "Augue Tincidunt",
-          "organisation": "Praesent Metus",
-          "summary": "Cras risus ipsum, faucibus ut, ullamcorper id, varius ac, leo. Suspendisse feugiat, aenean posuere, tortor sed cursus feugiat nunc augue blandit nunc."
+          "period": "Mar 2015 — Mai 2016",
+          "role": "Engenheiro de Software, Testes Automatizados",
+          "organisation": "DB Server — alocado na Dell",
+          "location": "Brasil",
+          "summary": "Entrei como estagiário e depois fui promovido a engenheiro de software. Atuei em três projetos de outsourcing para a Dell, responsável por desenvolver os testes automatizados.",
+          "stack": [
+            "C#",
+            "ASP.NET",
+            "Selenium WebDriver",
+            "Postman",
+            "SoapUI",
+            "Team Foundation Server"
+          ]
+        },
+        {
+          "period": "Set 2014 — Mar 2015",
+          "role": "Estágio em Engenharia de Software",
+          "organisation": "Microsoft Innovation Center & DB Server",
+          "location": "Brasil",
+          "summary": "Onde minha carreira começou, em um programa de aceleração promovido pelo Microsoft Innovation Center e pela DB Server. Desenvolvi o sistema que a DB Server usava para divulgar suas vagas e receber currículos, e tive meu primeiro contato com desenvolvimento web e métodos ágeis.",
+          "stack": [
+            "ASP.NET MVC",
+            "C#",
+            "Entity Framework",
+            "Visual Studio",
+            "JavaScript",
+            "jQuery",
+            "Bootstrap",
+            "Scrum",
+            "Kanban"
+          ]
         }
       ]
     },
     "links": {
       "title": "Links",
-      "kicker": "Conteúdo provisório",
+      "kicker": "Entre em contato",
       "items": [
         {
-          "label": "Lorem Ipsum",
-          "description": "Dolor sit amet consectetur adipiscing elit.",
-          "href": "https://example.com"
+          "label": "LinkedIn",
+          "description": "Onde mantenho meu histórico profissional atualizado.",
+          "href": "https://www.linkedin.com/in/brunoccst"
         },
         {
-          "label": "Consectetur Elit",
-          "description": "Integer at libero eget augue tincidunt tempor.",
-          "href": "https://example.com"
-        },
-        {
-          "label": "Vivamus Orci",
-          "description": "Suspendisse potenti mauris eget aliquam facilisis.",
-          "href": "https://example.com"
+          "label": "GitHub",
+          "description": "Projetos pessoais, incluindo o código deste site.",
+          "href": "https://github.com/brunoccst"
         }
       ]
     }

@@ -7,14 +7,20 @@ code. Planned work is in [NEXT-STEPS.md](NEXT-STEPS.md).
 
 ## Content
 
-### All content is placeholder text
+### The content is sourced only from the CV
 
-Every section holds lorem ipsum. The link entries point at `https://example.com`.
-The experience entries have invented dates and organisation names.
+Every section is written from `CV_BrunoCarvalhoDaCosta.pdf`. The intended
+cross-check against the LinkedIn profile did not happen: the profile is behind a
+login wall and returns a sign-in page to any unauthenticated fetch. Nothing in
+the content is corroborated by a second source, so anything the CV has outdated,
+the site now has outdated too.
 
-The shapes are real, though: `sections.experience.items` and
-`sections.links.items` in the locale files already have the fields the finished
-content needs, so replacing the values does not require touching a component.
+### The headline claims a title the CV does not
+
+The site heading reads "Software Engineer & Team Lead", but the CV gives the
+current DocuWare role as "Software Engineer" with no mention of a lead position.
+The heading is the wording originally supplied for the design; the experience
+entry follows the CV. One of the two is stale and they should be reconciled.
 
 ### No images or icons in the sections
 
