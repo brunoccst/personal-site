@@ -1,0 +1,81 @@
+@use '../../styles/mixins' as m;
+@use '../../styles/variables' as v;
+
+// The square: fixed to the viewport, inset on every side. The top inset is
+// larger because the system controls sit in that band.
+.frame {
+  position: fixed;
+  top: var(--frame-inset-top);
+  right: var(--frame-inset);
+  bottom: var(--frame-inset);
+  left: var(--frame-inset);
+  z-index: v.$z-frame;
+  max-width: var(--frame-max-width);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  opacity: 0;
+  animation: frame-in var(--duration-slow) v.$ease-out forwards;
+  transition:
+    background-color var(--duration-base) ease,
+    border-color var(--duration-base) ease;
+}
+
+.inner {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: clamp(1.5rem, 4vmin, 3rem);
+  min-height: 0;
+  padding: var(--frame-padding);
+}
+
+// Navigation on the left, content filling the rest of the frame.
+.body {
+  display: grid;
+  grid-template-columns: minmax(7rem, 11rem) 1fr;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  flex: 1;
+  min-height: 0;
+}
+
+@keyframes frame-in {
+  from {
+    opacity: 0;
+    transform: scale(0.995);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+// The navigation moves above the content on narrow screens.
+@include m.below(v.$bp-md) {
+  .inner {
+    gap: var(--space-5);
+  }
+
+  .body {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: var(--space-4);
+  }
+}
+
+@include m.short {
+  .inner {
+    gap: var(--space-4);
+  }
+}
+
+@include m.motion-reduce {
+  .frame {
+    opacity: 1;
+    animation: none;
+  }
+}

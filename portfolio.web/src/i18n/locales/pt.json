@@ -1,89 +1,93 @@
 {
-  "about": {
-    "title": "Sobre Mim",
-    "description": "Olá! 👋\nSou Team Lead na DocuWare e engenheiro de software de coração.\n\nGosto de tomar chimarrão 🧉, descobrir bandas novas 🎸 e programar. 💻\n\nGosto de pensar que, se tornei a vida de alguém melhor, já valeu a pena. Seja em uma pequena funcionalidade ou em um projeto complexo, busco garantir que tudo o que criamos faça uma diferença positiva para meus colegas e clientes.\n\nEstou aprendendo cada vez mais sobre liderança de equipes e acredito muito no poder do trabalho em equipe. Espero impactar positivamente o sucesso do time e apoiar meus colegas em seus objetivos profissionais e pessoais.\n\nNo lado técnico, me divirto mais com desenvolvimento frontend, especialmente com React, mas sempre atuei como full stack, principalmente com .NET, Microsoft SQL, JavaScript/TypeScript, HTML e CSS.\nAo longo dos anos, também adquiri experiência com CI/CD, pipelines automatizados, Infraestrutura como Código, Terraform e Microsoft Azure.\n\n<i>Nota: Este portfólio foi criado como um experimento pessoal para explorar a construção de código com o auxílio de IA, especificamente utilizando o CursorAI.</i>"
+  "meta": {
+    "nativeName": "Português",
+    "htmlLang": "pt"
   },
-  "skills": {
-    "title": "Habilidades",
-    "frontend": "Desenvolvimento Frontend",
-    "backend": "Desenvolvimento Backend",
-    "tools": "Ferramentas & Tecnologias"
+  "identity": {
+    "name": "Bruno Carvalho da Costa",
+    "separator": "|",
+    "role": "Engenheiro de Software & Líder de Equipe"
   },
-  "experience": {
-    "title": "Experiência",
-    "years": "{{years}} anos",
-    "companies": [
-      {
-        "company": "DocuWare",
-        "roles": [
-          {
-            "title": "Team Lead",
-            "period": "Abr 2024 – Presente",
-            "description": "Líder da equipe de Client Solutions. Gerencio as atividades diárias de um time responsável por portais de autoatendimento para parceiros e clientes. Responsável por liderar e orientar o time, gerenciar onboarding, garantir alinhamento com os objetivos da empresa, resolver problemas, promover colaboração, gerenciar cargas de trabalho, garantir conformidade de políticas, reportar à gestão e ser exemplo positivo."
-          },
-          {
-            "title": "Engenheiro de Software",
-            "period": "Nov 2020 – Abr 2024",
-            "description": "Engenheiro de Software na equipe de Client Solutions. Mantive e desenvolvi soluções que suportam o ecossistema da empresa. Atuação focada em frontend, mas com stack variada: Backend (ASP.NET Core, C#, F#, SQL), Frontend (TypeScript, JavaScript, SCSS, HTML), Frameworks (React, StencilJS, Vaadin), Microsserviços, CI/CD, Terraform, Azure DevOps e mais."
-          }
-        ]
-      },
-      {
-        "company": "MECOMO AG",
-        "roles": [
-          {
-            "title": "Engenheiro de Software",
-            "period": "Nov 2019 – Nov 2020",
-            "description": "Após concluir a graduação, mudei-me para a Alemanha e atuei em diversos projetos, criando novas funcionalidades, mantendo código e dando suporte a diferentes departamentos. Utilizei tecnologias como ASP.NET MVC, C#, SQL, HTML, CSS, JavaScript, jQuery, Bootstrap, Microsoft TFS, Google Maps e mais."
-          },
-          {
-            "title": "Engenheiro de Software",
-            "period": "Dez 2018 – Nov 2019",
-            "description": "Retornei ao Brasil para concluir a graduação, mas continuei trabalhando remotamente em projetos para a MECOMO AG."
-          },
-          {
-            "title": "Engenheiro de Software",
-            "period": "Jan 2018 – Dez 2018",
-            "description": "Mudei-me para a Alemanha por um ano para ganhar experiência internacional, atuando em diversos projetos e tecnologias."
-          },
-          {
-            "title": "Júnior Engenheiro de Software",
-            "period": "Mai 2016 – Jan 2018",
-            "description": "Atuei na MECOMO do Brasil, subsidiária da MECOMO AG. Desenvolvedor full stack em aplicações web para telemetria e relatórios. Stack: ASP.NET MVC, C#, SQL, HTML, CSS, JavaScript, Web Forms, Windows Forms, jQuery, Bootstrap, Microsoft TFS, Google Maps, Bing Maps, OpenStreetMap, AG Grid. Experiência breve com Node.js."
-          }
-        ]
-      },
-      {
-        "company": "DBServer",
-        "roles": [
-          {
-            "title": "Engenheiro de Testes Automatizados",
-            "period": "Ago 2015 – Mai 2016",
-            "description": "Promovido para atuar em projetos da Dell Inc., desenvolvendo testes automatizados. Stack: ASP.NET e C#, Selenium WebDriver, Postman, SoapUI."
-          },
-          {
-            "title": "Estagiário",
-            "period": "Mar 2015 – Ago 2015",
-            "description": "Contribuí em projeto ágil para a GV Energy (hoje ENGIE), atuando em backend e frontend. Stack: ASP.NET MVC, Microsoft SQL Server, LINQ, HTML, CSS, JavaScript, Bootstrap, jQuery, FontAwesome, AmCharts, FullCalendar, Google Maps, OpenStreetMap."
-          }
-        ]
-      }
-    ]
+  "intro": {
+    "skip": "Pular a introdução"
   },
-  "document": {
-    "title": "Meu Portfólio"
-  },
-  "role": {
-    "title": "Engenheiro de Software & Líder de Equipe"
-  },
-  "settings": {
-    "language": "Idioma",
-    "theme": "Tema",
-    "light": "Claro",
-    "dark": "Escuro"
-  },
-  "navigation": {
+  "nav": {
+    "label": "Seções do portfólio",
     "about": "Sobre mim",
-    "experience": "Experiência"
+    "experience": "Experiência",
+    "links": "Links"
+  },
+  "controls": {
+    "label": "Opções do site",
+    "language": "Mudar o idioma para inglês",
+    "theme": {
+      "toDark": "Mudar para o tema preto",
+      "toLight": "Mudar para o tema cinza"
+    }
+  },
+  "hint": {
+    "scroll": "Role a página ou use as setas para mudar de seção"
+  },
+  "a11y": {
+    "skipToContent": "Ir para o conteúdo",
+    "opensInNewTab": "(abre em uma nova aba)",
+    "sectionAnnouncement": "Seção {{section}}",
+    "pageTitle": "{{section}} — Bruno Carvalho da Costa"
+  },
+  "sections": {
+    "about": {
+      "title": "Sobre mim",
+      "kicker": "Conteúdo provisório",
+      "paragraphs": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at libero eget augue tincidunt tempor. Vivamus in orci a ligula pretium volutpat vitae quis nunc. Suspendisse potenti, mauris eget aliquam facilisis, arcu tellus tempus dui.",
+        "Curabitur sodales, ipsum non porttitor tincidunt, urna nisi vestibulum enim, sit amet consequat eros nibh in massa. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante, etiam sit amet orci eget eros faucibus tincidunt.",
+        "Praesent metus tellus, elementum eu, semper a, adipiscing nec, purus. Cras risus ipsum, faucibus ut, ullamcorper id, varius ac, leo. Suspendisse feugiat, aenean posuere, tortor sed cursus feugiat nunc augue blandit nunc."
+      ]
+    },
+    "experience": {
+      "title": "Experiência",
+      "kicker": "Conteúdo provisório",
+      "items": [
+        {
+          "period": "Lorem 2022 — Ipsum",
+          "role": "Dolor Sit Amet",
+          "organisation": "Consectetur Adipiscing",
+          "summary": "Vivamus in orci a ligula pretium volutpat vitae quis nunc. Suspendisse potenti, mauris eget aliquam facilisis, arcu tellus tempus dui, quis vestibulum leo mauris nec ligula."
+        },
+        {
+          "period": "Lorem 2019 — 2022",
+          "role": "Elit Tempor",
+          "organisation": "Integer Libero",
+          "summary": "Curabitur sodales, ipsum non porttitor tincidunt, urna nisi vestibulum enim, sit amet consequat eros nibh in massa. Donec vitae sapien ut libero venenatis faucibus."
+        },
+        {
+          "period": "Lorem 2016 — 2019",
+          "role": "Augue Tincidunt",
+          "organisation": "Praesent Metus",
+          "summary": "Cras risus ipsum, faucibus ut, ullamcorper id, varius ac, leo. Suspendisse feugiat, aenean posuere, tortor sed cursus feugiat nunc augue blandit nunc."
+        }
+      ]
+    },
+    "links": {
+      "title": "Links",
+      "kicker": "Conteúdo provisório",
+      "items": [
+        {
+          "label": "Lorem Ipsum",
+          "description": "Dolor sit amet consectetur adipiscing elit.",
+          "href": "https://example.com"
+        },
+        {
+          "label": "Consectetur Elit",
+          "description": "Integer at libero eget augue tincidunt tempor.",
+          "href": "https://example.com"
+        },
+        {
+          "label": "Vivamus Orci",
+          "description": "Suspendisse potenti mauris eget aliquam facilisis.",
+          "href": "https://example.com"
+        }
+      ]
+    }
   }
-} 
+}

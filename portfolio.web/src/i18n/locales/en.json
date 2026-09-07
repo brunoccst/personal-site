@@ -1,89 +1,93 @@
 {
-  "about": {
-    "title": "About Me",
-    "description": "Hey! 👋\nI’m a Team Lead at DocuWare, and a Software Engineer at heart.\n\nI like to drink mate 🧉, discover new bands 🎸 and code. 💻\n\nI like to think that if I made someone’s life better, then it was worth it.\nWhether it’s a small feature or a complex project, I aim to ensure that everything we create makes a positive difference for both my colleagues and our customers.\n\nI'm learning the ways of leading a team and I fully believe in the power of teamwork. I hope that I impact the team's success positively and that I can support my colleagues in achieving their professional and personal goals.\n\nOn the Software Engineering side, I have the most fun in frontend development, particularly with React, but I have always worked with full stack development, mostly with .NET, Microsoft SQL, JavaScript/TypeScript, HTML, and CSS.\nOver the years, I’ve also gained experience with CI/CD, automated pipelines, Infrastructure as Code, Terraform and Microsoft Azure.\n\n<i>Note: This portfolio was created as a personal experiment to explore building code with the help of AI, specifically using CursorAI.</i>"
+  "meta": {
+    "nativeName": "English",
+    "htmlLang": "en"
   },
-  "skills": {
-    "title": "Skills",
-    "frontend": "Frontend Development",
-    "backend": "Backend Development",
-    "tools": "Tools & Technologies"
+  "identity": {
+    "name": "Bruno Carvalho da Costa",
+    "separator": "|",
+    "role": "Software Engineer & Team Lead"
   },
-  "experience": {
-    "title": "Experience",
-    "years": "{{years}} years",
-    "companies": [
-      {
-        "company": "DocuWare",
-        "roles": [
-          {
-            "title": "Team Lead",
-            "period": "Apr 2024 – Present",
-            "description": "Team Lead of the Client Solutions Team. Manage daily activities of a key team developing self-service business portals for partners and direct customers. Responsibilities include leading and mentoring the team, managing onboarding, ensuring alignment with company goals, solving problems, promoting collaboration, managing workloads, ensuring policy compliance, reporting to management, and setting a positive example."
-          },
-          {
-            "title": "Software Engineer",
-            "period": "Nov 2020 – Apr 2024",
-            "description": "Software Engineer in the Client Solutions team. Maintained and developed solutions supporting the company's ecosystem. Focused on frontend development with a wide-ranging tech stack: Backend (ASP.NET Core, C#, F#, SQL), Frontend (TypeScript, JavaScript, SCSS, HTML), Frameworks (React, StencilJS, Vaadin), Microservices, CI/CD, Terraform, Azure DevOps, and more."
-          }
-        ]
-      },
-      {
-        "company": "MECOMO AG",
-        "roles": [
-          {
-            "title": "Software Engineer",
-            "period": "Nov 2019 – Nov 2020",
-            "description": "Relocated to Germany after completing my bachelor's degree. Worked on various projects, creating new features, maintaining code, and providing support for different departments. Utilized technologies such as ASP.NET MVC, C#, SQL, HTML, CSS, JavaScript, jQuery, Bootstrap, Microsoft TFS, Google Maps, and more."
-          },
-          {
-            "title": "Software Engineer",
-            "period": "Dec 2018 – Nov 2019",
-            "description": "Returned to Brazil to complete my bachelor's degree, continued working on projects for MECOMO AG remotely."
-          },
-          {
-            "title": "Software Engineer",
-            "period": "Jan 2018 – Dec 2018",
-            "description": "Moved to Germany for a year to gain international experience, working on a variety of projects and technologies."
-          },
-          {
-            "title": "Junior Software Engineer",
-            "period": "May 2016 – Jan 2018",
-            "description": "Joined MECOMO do Brasil, the Brazilian subsidiary of MECOMO AG. Worked as a full stack developer on web applications for telemetry information and reporting. Tech stack: ASP.NET MVC, C#, SQL, HTML, CSS, JavaScript, Web Forms, Windows Forms, jQuery, Bootstrap, Microsoft TFS, Google Maps, Bing Maps, OpenStreetMap, AG Grid. Briefly explored Node.js for a specific project."
-          }
-        ]
-      },
-      {
-        "company": "DBServer",
-        "roles": [
-          {
-            "title": "Test Automation Engineer",
-            "period": "Aug 2015 – May 2016",
-            "description": "Promoted to this role and worked on projects for Dell Inc., developing automated tests. Tech stack: ASP.NET and C#, Selenium WebDriver, Postman, SoapUI."
-          },
-          {
-            "title": "Intern",
-            "period": "Mar 2015 – Aug 2015",
-            "description": "Contributed to an agile project for GV Energy (now ENGIE), working on both backend and frontend development. Tech stack: ASP.NET MVC, Microsoft SQL Server, LINQ, HTML, CSS, JavaScript, Bootstrap, jQuery, FontAwesome, AmCharts, FullCalendar, Google Maps, OpenStreetMap."
-          }
-        ]
-      }
-    ]
+  "intro": {
+    "skip": "Skip the introduction"
   },
-  "document": {
-    "title": "My Portfolio"
-  },
-  "role": {
-    "title": "Software Engineer & Team Lead"
-  },
-  "settings": {
-    "language": "Language",
-    "theme": "Theme",
-    "light": "Light",
-    "dark": "Dark"
-  },
-  "navigation": {
+  "nav": {
+    "label": "Portfolio sections",
     "about": "About me",
-    "experience": "Experience"
+    "experience": "Experience",
+    "links": "Links"
+  },
+  "controls": {
+    "label": "Site options",
+    "language": "Switch language to Portuguese",
+    "theme": {
+      "toDark": "Switch to the black theme",
+      "toLight": "Switch to the grey theme"
+    }
+  },
+  "hint": {
+    "scroll": "Scroll or use the arrow keys to move between sections"
+  },
+  "a11y": {
+    "skipToContent": "Skip to content",
+    "opensInNewTab": "(opens in a new tab)",
+    "sectionAnnouncement": "{{section}} section",
+    "pageTitle": "{{section}} — Bruno Carvalho da Costa"
+  },
+  "sections": {
+    "about": {
+      "title": "About me",
+      "kicker": "Placeholder content",
+      "paragraphs": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at libero eget augue tincidunt tempor. Vivamus in orci a ligula pretium volutpat vitae quis nunc. Suspendisse potenti, mauris eget aliquam facilisis, arcu tellus tempus dui.",
+        "Curabitur sodales, ipsum non porttitor tincidunt, urna nisi vestibulum enim, sit amet consequat eros nibh in massa. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante, etiam sit amet orci eget eros faucibus tincidunt.",
+        "Praesent metus tellus, elementum eu, semper a, adipiscing nec, purus. Cras risus ipsum, faucibus ut, ullamcorper id, varius ac, leo. Suspendisse feugiat, aenean posuere, tortor sed cursus feugiat nunc augue blandit nunc."
+      ]
+    },
+    "experience": {
+      "title": "Experience",
+      "kicker": "Placeholder content",
+      "items": [
+        {
+          "period": "Lorem 2022 — Ipsum",
+          "role": "Dolor Sit Amet",
+          "organisation": "Consectetur Adipiscing",
+          "summary": "Vivamus in orci a ligula pretium volutpat vitae quis nunc. Suspendisse potenti, mauris eget aliquam facilisis, arcu tellus tempus dui, quis vestibulum leo mauris nec ligula."
+        },
+        {
+          "period": "Lorem 2019 — 2022",
+          "role": "Elit Tempor",
+          "organisation": "Integer Libero",
+          "summary": "Curabitur sodales, ipsum non porttitor tincidunt, urna nisi vestibulum enim, sit amet consequat eros nibh in massa. Donec vitae sapien ut libero venenatis faucibus."
+        },
+        {
+          "period": "Lorem 2016 — 2019",
+          "role": "Augue Tincidunt",
+          "organisation": "Praesent Metus",
+          "summary": "Cras risus ipsum, faucibus ut, ullamcorper id, varius ac, leo. Suspendisse feugiat, aenean posuere, tortor sed cursus feugiat nunc augue blandit nunc."
+        }
+      ]
+    },
+    "links": {
+      "title": "Links",
+      "kicker": "Placeholder content",
+      "items": [
+        {
+          "label": "Lorem Ipsum",
+          "description": "Dolor sit amet consectetur adipiscing elit.",
+          "href": "https://example.com"
+        },
+        {
+          "label": "Consectetur Elit",
+          "description": "Integer at libero eget augue tincidunt tempor.",
+          "href": "https://example.com"
+        },
+        {
+          "label": "Vivamus Orci",
+          "description": "Suspendisse potenti mauris eget aliquam facilisis.",
+          "href": "https://example.com"
+        }
+      ]
+    }
   }
-} 
+}

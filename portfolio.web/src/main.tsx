@@ -1,14 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import { ThemeProvider } from './contexts/ThemeContext';
-import './i18n/config';
-import './styles/index.scss';
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <ThemeProvider>
-      <App />
-    </ThemeProvider>
-  </React.StrictMode>
-); 
+import App from './App';
+import './i18n';
+import { AppThemeProvider } from './theme/AppThemeProvider';
+import './styles/global.scss';
+
+const container = document.getElementById('root');
+if (!container) throw new Error('Root element #root is missing from index.html');
+
+createRoot(container).render(
+  <StrictMode>
+    <AppThemeProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </AppThemeProvider>
+  </StrictMode>,
+);

@@ -1,0 +1,69 @@
+@use '../../styles/mixins' as m;
+@use '../../styles/variables' as v;
+
+.brand {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4em;
+  font-size: var(--text-xl);
+  font-weight: 300;
+  line-height: var(--leading-tight);
+  letter-spacing: -0.01em;
+  // Revealed left to right by widening the visible area.
+  clip-path: inset(0 100% 0 0);
+  opacity: 0;
+  animation: brand-in var(--duration-slow) v.$ease-out 80ms forwards;
+}
+
+.name {
+  color: var(--color-text);
+}
+
+.separator {
+  color: var(--color-accent);
+  font-weight: 200;
+}
+
+.role {
+  color: var(--color-text-muted);
+  font-size: 0.78em;
+  letter-spacing: 0;
+}
+
+@keyframes brand-in {
+  from {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0;
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}
+
+// Narrow screens stack the two halves and drop the pipe between them.
+@include m.below(v.$bp-md) {
+  .brand {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.15em;
+    font-size: var(--text-lg);
+  }
+
+  .separator {
+    display: none;
+  }
+
+  .role {
+    font-size: 0.8em;
+  }
+}
+
+@include m.motion-reduce {
+  .brand {
+    clip-path: none;
+    opacity: 1;
+    animation: none;
+  }
+}

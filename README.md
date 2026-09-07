@@ -1,11 +1,299 @@
 # Portfolio
+
 [![Netlify Status](https://api.netlify.com/api/v1/badges/ac440973-f6e4-4d25-b49a-b5e98d166b28/deploy-status)](https://app.netlify.com/sites/brunoccst/deploys)
 
-This repository contains my personal portfolio.
-An online version of the portfolio can be found at: [https://brunoccst.netlify.app/](https://brunoccst.netlify.app/)
+Personal portfolio of Bruno Carvalho da Costa. Live at
+[brunoccst.netlify.app](https://brunoccst.netlify.app/).
 
-## Structure
+It is a single-page application: one HTML file loads a React app that swaps the
+visible section without a full page reload.
 
-This repository only has one project, `portfolio.web` - a React + TypeScript + Vite project.
-It contains the actual published web app.
-Visit its [README](/portfolio.web/README.md) for more information on how to run it.
+---
+
+## Requirements
+
+- Node.js 22 or newer
+- npm 10 or newer
+
+Check what you have:
+
+```bash
+node -v && npm -v
+```
+
+## Running it locally
+
+```bash
+cd portfolio.web && npm install && npm run dev
+```
+
+The dev server prints a URL (usually `http://localhost:5173`). It reloads the
+browser when you save a file.
+
+## npm scripts
+
+All scripts run from the `portfolio.web` folder.
+
+| Script | What it does |
+| --- | --- |
+| `npm run dev` | Starts the development server with hot reload. |
+| `npm run build` | Type-checks the code, then writes the production files to `portfolio.web/dist`. |
+| `npm run preview` | Serves the contents of `dist` so you can check the production build. |
+| `npm run typecheck` | Runs the TypeScript compiler without producing files. |
+
+## Repository layout
+
+```
+portfolio/
+├── docs/                 Written notes about the project
+│   ├── DECISIONS.md      Why the project is built this way
+│   ├── KNOWN-ISSUES.md   Things that are wrong or incomplete
+│   └── NEXT-STEPS.md     Planned work
+├── netlify.toml          Build and hosting settings for Netlify
+└── portfolio.web/        The React application
+```
+
+## Application layout
+
+```
+portfolio.web/
+├── index.html            Page shell; loads src/main.tsx
+├── public/               Files copied to the site root as-is
+├── vite.config.ts        Build tool configuration
+├── tsconfig*.json        TypeScript configuration
+└── src/
+    ├── main.tsx          Creates the React root and wraps the app in providers
+    ├── App.tsx           Intro sequence and the route table
+    ├── components/       UI pieces, one folder per component
+    ├── sections/         Content of the three portfolio sections
+    ├── config/           Section list shared by the router and the navigation
+    ├── hooks/            Reusable pieces of behaviour
+    ├── i18n/             Translation setup and the locale files
+    ├── styles/           Design tokens, mixins and global CSS
+    └── theme/            Material UI theme and light/dark switching
+```
+
+## Tech stack
+
+| Tool | Used for |
+| --- | --- |
+| [React 19](https://react.dev/) | Building the interface. |
+| [TypeScript](https://www.typescriptlang.org/) | Types for every file in `src`. |
+| [Vite](https://vite.dev/) | Dev server and production build. |
+| [React Router](https://reactrouter.com/) | Mapping URLs such as `/experience` to a section. |
+| [i18next](https://www.i18next.com/) + react-i18next | Loading text from locale files. |
+| [Material UI](https://mui.com/) | The icon buttons and tooltips in the top-right corner. |
+| [Sass](https://sass-lang.com/) | Writing the styles as SCSS. |
+
+## How the page works
+
+### The frame
+
+`components/Layout/Layout.tsx` renders a `<main>` element that is fixed to the
+viewport and inset from every edge. Its stylesheet calls that element the
+*frame*. Everything the visitor reads lives inside it. The frame's top inset is
+larger than the other three, which leaves an empty band for the system controls
+that sit outside the frame.
+
+Inside the frame:
+
+- `components/Brand/Brand.tsx` — the `<h1>` in the top-left corner.
+- `components/SideNav/SideNav.tsx` — the list of sections.
+- `components/ContentPanel/ContentPanel.tsx` — the scrollable area holding the
+  current section.
+
+### The intro
+
+`components/Intro/Intro.tsx` covers the screen when the app first mounts. It
+shows the name and the role sliding out of the `|` character between them, waits
+three seconds, then sends them back out in opposite directions.
+
+`App.tsx` tracks the intro with a `stage` value:
+
+1. `intro` — only the intro is on screen.
+2. `revealing` — the intro started leaving, and the page is mounted behind it so
+   the two cross-fade.
+3. `done` — the intro is removed from the React tree.
+
+Pressing <kbd>Esc</kbd> or the skip button jumps straight to `done`.
+
+### Moving between sections
+
+The `<body>` element has `overflow: hidden`, so the window itself never scrolls.
+`hooks/useSectionNavigation.ts` listens for wheel, touch and key events on the
+window and calls React Router's `navigate` to show the next or previous section.
+
+The content panel gets priority: when it still has room to scroll, the hook lets
+the browser scroll it and does not change the section. Only when the panel has
+reached its top or bottom does the input move to another section.
+
+Inputs the hook understands:
+
+| Input | Result |
+| --- | --- |
+| Mouse wheel or trackpad, 60px of travel | Next or previous section |
+| Vertical swipe of 56px or more | Next or previous section |
+| <kbd>↓</kbd> <kbd>↑</kbd> <kbd>PageDown</kbd> <kbd>PageUp</kbd> | Next or previous section |
+| <kbd>Home</kbd> <kbd>End</kbd> | First or last section |
+
+After a change, further input is ignored for 700ms so one long gesture does not
+skip several sections.
+
+### Routing
+
+`config/sections.ts` holds the ordered list of sections. Both the router and the
+side navigation read from it, so the two can never disagree.
+
+| URL | Section |
+| --- | --- |
+| `/` | Redirects to `/about` |
+| `/about` | About me |
+| `/experience` | Experience |
+| `/links` | Links |
+| anything else | Redirects to `/about` |
+
+## Styling
+
+Styles are written as SCSS. Every component has its own `*.module.scss` file
+next to it. Vite turns those into [CSS Modules](https://vite.dev/guide/features#css-modules):
+class names are made unique at build time, so a class in one component cannot
+affect another.
+
+Shared code lives in `src/styles`:
+
+| File | Contents |
+| --- | --- |
+| `_tokens.scss` | CSS custom properties: colours, spacing, font sizes, motion timings. |
+| `_variables.scss` | Sass values used at build time: breakpoints, easing curves, z-index layers. |
+| `_mixins.scss` | Reusable blocks such as `below()`, `motion-reduce` and `visually-hidden`. |
+| `global.scss` | Reset, `<body>` defaults, focus ring, skip link. |
+
+Import a shared file with `@use`:
+
+```scss
+@use '../../styles/mixins' as m;
+@use '../../styles/variables' as v;
+
+.example {
+  color: var(--color-text);
+
+  @include m.below(v.$bp-md) {
+    color: var(--color-text-muted);
+  }
+}
+```
+
+### Themes
+
+Both themes are dark. The light theme uses a grey background, the dark theme a
+pure black one.
+
+`theme/AppThemeProvider.tsx` writes the current mode onto the `<html>` element as
+`data-theme="light"` or `data-theme="dark"`. `_tokens.scss` defines the light
+values on `:root` and overrides the colour tokens under `[data-theme='dark']`.
+Nothing else needs to know which theme is active — every component reads colours
+through `var(--color-*)`.
+
+The chosen mode is saved in `localStorage` under `portfolio.theme`. Without a
+saved value, the app follows the operating system setting.
+
+### Font sizes
+
+Font sizes are `clamp()` values in `_tokens.scss`, for example:
+
+```scss
+--text-base: clamp(0.9375rem, 0.9rem + 0.2vw, 1.0625rem);
+```
+
+The browser picks a size between the first and last values based on the viewport
+width, so text scales without extra media queries.
+
+## Text and translations
+
+No user-facing string is written inside a component. Strings live in
+`src/i18n/locales/en.json` and `src/i18n/locales/pt.json`, and components read
+them with the `t` function:
+
+```tsx
+const { t } = useTranslation();
+return <h2>{t('sections.about.title')}</h2>;
+```
+
+English is the default and the fallback: if a key is missing from `pt.json`, the
+English value is shown.
+
+`src/i18n/index.ts` picks the starting language in this order:
+
+1. the value saved in `localStorage` under `portfolio.language`
+2. the browser's preferred languages
+3. English
+
+For arrays of strings or objects, use the `useTranslatedList` hook:
+
+```tsx
+const paragraphs = useTranslatedList<string>('sections.about.paragraphs');
+```
+
+### Adding a translation key
+
+1. Add the key to `en.json`.
+2. Add the same key to `pt.json`.
+3. Read it with `t('your.key')`.
+
+Keep the two files in the same shape. A key that exists in only one file falls
+back to English at runtime.
+
+## Adding a section
+
+1. Add an entry to the array in `src/config/sections.ts`:
+
+   ```ts
+   { id: 'projects', path: '/projects', labelKey: 'nav.projects' }
+   ```
+
+2. Add `nav.projects` and a `sections.projects` block to both locale files.
+3. Create `src/sections/ProjectsSection.tsx`. Copy `AboutSection.tsx` and reuse
+   the class names from `Section.module.scss`.
+4. Register the component in `SECTION_COMPONENTS` inside `src/App.tsx`.
+
+The side navigation, the route table and the scroll order all follow from the
+array, so nothing else needs changing.
+
+## Accessibility
+
+- A skip link is the first item in the tab order and jumps to the content panel.
+- The active navigation entry carries `aria-current="page"`, added by React
+  Router's `NavLink`.
+- The content panel is a labelled region with `tabindex="0"`, so keyboard users
+  can scroll it.
+- A hidden live region announces the section name after every change, and the
+  document title is updated to match.
+- Every animation is switched off when the operating system asks for reduced
+  motion, and the intro is skipped entirely.
+- Focus is drawn with a two-pixel outline in the accent colour.
+- Text colours meet WCAG AA contrast against their backgrounds. The measured
+  ratios are listed in [docs/DECISIONS.md](docs/DECISIONS.md).
+
+## Deployment
+
+Netlify builds the site from the `main` branch of this repository. The settings
+live in `netlify.toml` at the repository root:
+
+- `base` is `portfolio.web`, so Netlify runs the build inside that folder.
+- `command` is `npm run build`.
+- `publish` is `dist`.
+- A catch-all redirect returns `index.html` with status 200 for every path. This
+  is what makes `brunoccst.netlify.app/experience` work on a fresh page load —
+  without it, Netlify would look for a file at that path and return a 404.
+
+Pushing to `main` triggers a deploy.
+
+## Further reading
+
+- [docs/DECISIONS.md](docs/DECISIONS.md)
+- [docs/KNOWN-ISSUES.md](docs/KNOWN-ISSUES.md)
+- [docs/NEXT-STEPS.md](docs/NEXT-STEPS.md)
+
+## Licence
+
+[MIT](LICENSE)

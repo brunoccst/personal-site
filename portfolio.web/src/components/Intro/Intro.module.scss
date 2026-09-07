@@ -1,0 +1,233 @@
+@use '../../styles/mixins' as m;
+@use '../../styles/variables' as v;
+
+// Distance the two halves travel while entering and leaving.
+$travel: 1.6em;
+$enter-delay: 150ms;
+$enter-duration: 900ms;
+$exit-duration: 700ms;
+
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: v.$z-intro;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  place-items: center;
+  padding: var(--space-6);
+  background-color: var(--color-bg);
+  overflow: hidden;
+
+  &[data-phase='exit'] {
+    // The page underneath is already fading in, so it takes the clicks.
+    pointer-events: none;
+    animation: backdrop-out $exit-duration v.$ease-in forwards;
+  }
+}
+
+.line {
+  grid-row: 1;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.45em;
+  max-width: 100%;
+  font-size: var(--text-display);
+  font-weight: 300;
+  line-height: var(--leading-tight);
+  letter-spacing: -0.015em;
+  text-align: center;
+}
+
+.name,
+.role {
+  display: block;
+  // Each half stays on one line; the font size shrinks with the viewport.
+  white-space: nowrap;
+  opacity: 0;
+}
+
+.name {
+  color: var(--color-text);
+}
+
+.role {
+  color: var(--color-text-muted);
+  font-weight: 300;
+}
+
+.separatorGlyph {
+  color: var(--color-accent);
+  font-weight: 200;
+  opacity: 0;
+  transform: scaleY(0.3);
+  transform-origin: center;
+}
+
+// Horizontal stand-in for the pipe character on narrow screens.
+.separatorBar {
+  display: none;
+  width: 3.5rem;
+  height: 1px;
+  background-color: var(--color-accent);
+  opacity: 0;
+  transform: scaleX(0.3);
+}
+
+.skip {
+  grid-row: 2;
+  padding: var(--space-2) var(--space-4);
+  color: var(--color-text-faint);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  border-radius: var(--radius-md);
+  opacity: 0;
+  animation: fade-in 400ms v.$ease-out 1600ms forwards;
+  transition: color var(--duration-fast) ease;
+
+  &:hover {
+    color: var(--color-text);
+  }
+}
+
+// --- Entering ---
+
+.intro[data-phase='enter'] {
+  .name {
+    animation: name-in $enter-duration v.$ease-out $enter-delay forwards;
+  }
+
+  .role {
+    animation: role-in $enter-duration v.$ease-out $enter-delay forwards;
+  }
+
+  .separatorGlyph,
+  .separatorBar {
+    animation: separator-in 500ms v.$ease-out forwards;
+  }
+}
+
+// --- Leaving: each half continues past the edge it came from ---
+
+.intro[data-phase='exit'] {
+  .name {
+    animation: name-out $exit-duration v.$ease-in forwards;
+  }
+
+  .role {
+    animation: role-out $exit-duration v.$ease-in forwards;
+  }
+
+  .separatorGlyph,
+  .separatorBar {
+    animation: separator-out $exit-duration v.$ease-in forwards;
+  }
+
+  .skip {
+    animation: fade-out 200ms linear forwards;
+  }
+}
+
+@keyframes name-in {
+  from {
+    opacity: 0;
+    transform: translateX($travel);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes role-in {
+  from {
+    opacity: 0;
+    transform: translateX(-$travel);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes name-out {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-$travel);
+  }
+}
+
+@keyframes role-out {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX($travel);
+  }
+}
+
+@keyframes separator-in {
+  from {
+    opacity: 0;
+    transform: scaleY(0.3) scaleX(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1) scaleX(1);
+  }
+}
+
+@keyframes separator-out {
+  to {
+    opacity: 0;
+    transform: scaleY(0.3) scaleX(0.3);
+  }
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+// Holds the backdrop solid while the text flies out, then clears it.
+@keyframes backdrop-out {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+// Narrow screens stack the two halves and swap the pipe for a rule.
+@include m.below(v.$bp-md) {
+  .line {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7em;
+    font-size: clamp(1rem, 5.4vw, 2rem);
+  }
+
+  .separatorGlyph {
+    display: none;
+  }
+
+  .separatorBar {
+    display: block;
+  }
+}
