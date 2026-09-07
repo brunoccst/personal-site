@@ -6,8 +6,9 @@ import styles from './Intro.module.scss';
 
 // Milliseconds from mount until the text starts leaving.
 const EXIT_AT_MS = 3200;
-// Length of the leaving animation, matching `$exit-duration` in the stylesheet.
-const EXIT_DURATION_MS = 900;
+// Length of the leaving animation, matching `$exit-duration` in the stylesheet:
+// the words sliding back, then the separator fading out behind them.
+const EXIT_DURATION_MS = 1250;
 
 type Phase = 'enter' | 'exit';
 
