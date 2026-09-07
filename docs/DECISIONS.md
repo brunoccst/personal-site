@@ -131,38 +131,72 @@ rather than as a bug.
 This will fill in once real content with images and icons replaces the
 placeholder text.
 
+### The system controls share the frame's geometry
+
+The controls sit outside the frame, but their right edge has to line up with the
+frame's right border. Giving them `right: var(--frame-inset)` is not enough: the
+frame is also capped at `--frame-max-width` and centred, so on a viewport wider
+than that cap the frame's edge is further in than the raw inset.
+
+The strip therefore repeats the frame's whole geometry — both insets, the same
+`max-width`, the same `margin-inline: auto` — and right-aligns its contents. The
+two edges then agree at every width. The strip takes `pointer-events: none` so
+that the empty part of it does not sit over the page, and the buttons take
+`pointer-events: auto` back.
+
+The last button also carries a negative right margin equal to its own padding,
+so what lines up with the border is the icon itself rather than the invisible
+edge of its hit area. That padding is set in the MUI theme under `sizeSmall`
+rather than in the stylesheet, because MUI's own `sizeSmall` rule is more
+specific than a CSS Modules class and would otherwise win.
+
+For the same reason the frame's entrance animation fades without scaling. An
+earlier `scale(0.995)` pulled the frame's painted edge a few pixels away from
+the controls for the duration of the animation.
+
 ---
 
 ## Colour and type
 
-### Two dark themes
+### One light theme, one black theme
 
-The brief asked for a dark page in both modes: pure black for dark mode, grey
-for light mode. The palette follows the background rather than fighting it — a
-near-monochrome set of greys with a single warm accent.
+The original brief asked for a dark page in both modes — pure black for dark,
+grey for light. That was revised: the light theme is now genuinely light, warm
+and pastel, and only the dark theme stays dark.
 
-The accent is a muted gold (`#c9a86a` on grey, `#d8b878` on black). It was
-picked because it holds a high contrast ratio against both backgrounds without
-the neon quality a saturated hue takes on against pure black, and because a
-single accent keeps the page calm enough that the accent actually means
-something: it marks the selected navigation entry and nothing else competes
-with it.
+The light theme is built on a warm off-white (`#f0ede7` page, `#fbf9f6` frame)
+rather than pure white. Pure white against a near-black frame border is harsh at
+full screen brightness, and the slight warmth keeps the two themes recognisably
+the same design rather than two unrelated skins.
+
+Each theme has one accent and no second colour. Light uses a muted bronze
+(`#8c6239`), dark a soft gold (`#d8b878`) — the same hue family at the two
+lightnesses each background needs. Keeping a single accent per theme is what
+lets it carry meaning: it marks the selected navigation entry, the section
+kicker and link hovers, and nothing else competes with it.
+
+Pastel here means the *surfaces* are pastel. The accent and the text are not:
+a genuinely pastel accent cannot reach 4.5:1 against an off-white background, so
+the accent is a desaturated mid-tone that reads as muted without failing
+contrast.
 
 ### Measured contrast ratios
 
-Computed against the frame background of each theme (`#1c1f23` grey,
-`#0a0b0c` black):
+Computed against the frame background of each theme (`#fbf9f6` light,
+`#0a0b0c` dark):
 
-| Token | Grey theme | Black theme | WCAG AA (4.5:1) |
+| Token | Light theme | Dark theme | WCAG AA (4.5:1) |
 | --- | --- | --- | --- |
-| `--color-text` | 14.10:1 | 17.92:1 | Pass |
-| `--color-text-muted` | 6.77:1 | 7.14:1 | Pass |
-| `--color-text-faint` | 4.83:1 | 5.16:1 | Pass |
-| `--color-accent` | 7.32:1 | 10.36:1 | Pass |
+| `--color-text` | 14.61:1 | 17.92:1 | Pass |
+| `--color-text-muted` | 6.10:1 | 7.14:1 | Pass |
+| `--color-text-faint` | 4.74:1 | 5.16:1 | Pass |
+| `--color-accent` | 5.10:1 | 10.36:1 | Pass |
 
-`--color-text-faint` started at `#71767e` / `#6a6a72`, which measured 3.62:1 and
-3.67:1. Those fail AA for body text, and the token is used for real content —
-the date range on each experience entry — so both values were lightened.
+`--color-text-faint` is the token to watch. It is the smallest, quietest text on
+the page and carries real content — the date range on each experience entry — so
+it has to clear 4.5:1 rather than the 3:1 that would do for decoration. Both
+themes were adjusted after measuring; every value in the table above was checked
+rather than eyeballed.
 
 ### No web fonts
 
@@ -238,34 +272,65 @@ The newest outlet element is held in a ref rather than in the effect's
 dependencies. Route elements are new objects on every render, so depending on
 one directly would re-run the effect forever.
 
+### The intro text really does come out of the pipe
+
+The first version translated each half outward from the separator by a fixed
+`1.6em`. That is wrong, and it looked it: a translated element still paints in
+full, so at the start of the animation "Costa" sat directly on top of "Software"
+and the two halves visibly crossed the `|`.
+
+The fix is a mask. Each half is wrapped in a `.mask` span that stays at the
+text's final position and clips to it:
+
+```scss
+.mask {
+  display: inline-block;
+  clip-path: inset(-0.4em 0 -0.4em 0);
+}
+```
+
+The text inside starts at `translateX(100%)` (the name) or `translateX(-100%)`
+(the role), which puts it entirely outside its own mask, tucked behind the
+separator, and animates to `translateX(0)`. Because the mask never moves, no
+part of either half can appear on the wrong side of the `|` — the constraint is
+geometric rather than a matter of tuning a distance.
+
+The negative vertical insets matter: `inset(0 ...)` would clip ascenders and
+descenders flat. Negative values let the text overflow vertically while still
+being clipped horizontally.
+
 ### Intro timing
 
 | Moment | What happens |
 | --- | --- |
-| 0ms | Intro mounts; the `\|` scales in |
-| 150–1050ms | Name slides left out of the pipe, role slides right |
-| 1600ms | Skip button fades in |
-| 3000ms | Both halves fly apart and fade; the page mounts behind the intro |
-| 3350ms | Backdrop starts clearing |
-| 3700ms | Intro is removed from the tree |
+| 0–600ms | The `\|` fades and scales in |
+| 200–1400ms | Both halves slide out of the pipe into place |
+| 3200ms | The animation reverses; the page mounts behind the intro |
+| 3830ms | Backdrop starts clearing |
+| 4100ms | Intro is removed from the tree |
 
-The brief says the text fades out "to the opposite directions of where they
-faded in". The name entered by moving leftward, so it leaves moving leftward
-again — the two halves fly apart rather than collapsing back onto the pipe.
-Flying apart reads as the page opening up; collapsing reads as a mistake being
-undone.
+The exit is the exact reverse of the entrance: each half slides back into the
+`|` and the separator fades last, once the text is back inside it. An earlier
+version had the two halves flying apart instead, which read as the page opening
+up but was not what "the opposite direction" describes.
 
-The page is mounted at 3000ms rather than at 3700ms. An earlier version waited
+The page is mounted at 3200ms rather than at 4100ms. An earlier version waited
 for the intro to unmount, which left roughly 200ms of empty background between
 the two. Mounting the page behind the still-opaque backdrop makes the two
 cross-fade instead.
 
-### Escaping the intro
+The entrance runs for 1200ms and the exit for 900ms — both roughly double the
+first draft. At the shorter durations the movement registered as a jump rather
+than a slide.
 
-The intro is skippable three ways: the button, the <kbd>Esc</kbd> key, and the
-reduced-motion setting, which removes it entirely. A three-and-a-half second
-animation in front of the content is a real cost for a returning visitor, and an
-unavoidable one is worse.
+### The intro cannot be skipped
+
+An earlier version had a skip button and an <kbd>Esc</kbd> handler. Both are
+gone: at about four seconds the opening is short enough that an escape hatch was
+more clutter than help, and the button competed with the text it sat under.
+
+The reduced-motion bypass stays. That is an accessibility requirement rather
+than a convenience, and it removes the intro entirely.
 
 The intro plays on every full page load rather than once per session. Making it
 conditional on `sessionStorage` was considered and rejected: it makes the first

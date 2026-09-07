@@ -1,20 +1,22 @@
 // CSS custom properties. `:root` holds the light theme; `[data-theme='dark']`
-// overrides the colours that differ. Both themes are dark-toned.
+// overrides the colours that differ.
 
 :root {
-  // --- Light theme: grey background ---
-  --color-bg: #16181b;
-  --color-bg-elevated: #1c1f23;
-  --color-bg-sunken: #101215;
-  --color-border: rgb(255 255 255 / 9%);
-  --color-border-strong: rgb(255 255 255 / 20%);
-  --color-text: #eceded;
-  --color-text-muted: #a2a6ad;
-  --color-text-faint: #868b93;
-  --color-accent: #c9a86a;
-  --color-accent-contrast: #16181b;
-  --color-accent-soft: rgb(201 168 106 / 12%);
-  --color-focus: #e0c48c;
+  // --- Light theme: warm off-white background ---
+  color-scheme: light;
+
+  --color-bg: #f0ede7;
+  --color-bg-elevated: #fbf9f6;
+  --color-bg-sunken: #e8e4dc;
+  --color-border: rgb(35 37 41 / 12%);
+  --color-border-strong: rgb(35 37 41 / 26%);
+  --color-text: #232529;
+  --color-text-muted: #5b5f66;
+  --color-text-faint: #6b7079;
+  --color-accent: #8c6239;
+  --color-accent-contrast: #fbf9f6;
+  --color-accent-soft: rgb(140 98 57 / 12%);
+  --color-focus: #7a5430;
 
   // --- Spacing scale ---
   --space-1: 0.25rem;
@@ -70,6 +72,8 @@
 
 [data-theme='dark'] {
   // --- Dark theme: pure black background ---
+  color-scheme: dark;
+
   --color-bg: #000000;
   --color-bg-elevated: #0a0b0c;
   --color-bg-sunken: #000000;

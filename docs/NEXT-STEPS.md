@@ -61,7 +61,7 @@ Once the content is known:
 - Cover the theme and language toggles, including the `localStorage` failure
   path.
 - Add a small Playwright suite for the paths that only exist in a browser: the
-  intro playing and being skippable, deep-linking to `/experience`, and a wheel
+  intro playing through to the page, deep-linking to `/experience`, and a wheel
   gesture changing section.
 
 ## 6. Performance
@@ -89,8 +89,12 @@ Once the content is known:
   it.
 - Add `prefers-contrast: more` overrides that raise the border and muted-text
   tokens.
-- Give the scroll hint a screen-reader-visible equivalent, or add instructions
-  to the navigation's accessible description.
+- Tell people that scrolling moves between sections. The on-screen hint has been
+  removed, so the behaviour is now undiscoverable for everyone rather than just
+  for screen reader users. An accessible description on the navigation, or a
+  quieter visual cue, would cover both.
+- Reconsider whether the intro should be skippable. It is four seconds on every
+  full page load with no way out.
 
 ## 8. Internationalisation follow-ups
 

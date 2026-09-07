@@ -8,9 +8,6 @@
     "separator": "|",
     "role": "Engenheiro de Software & Líder de Equipe"
   },
-  "intro": {
-    "skip": "Pular a introdução"
-  },
   "nav": {
     "label": "Seções do portfólio",
     "about": "Sobre mim",
@@ -21,12 +18,9 @@
     "label": "Opções do site",
     "language": "Mudar o idioma para inglês",
     "theme": {
-      "toDark": "Mudar para o tema preto",
-      "toLight": "Mudar para o tema cinza"
+      "toDark": "Mudar para o tema escuro",
+      "toLight": "Mudar para o tema claro"
     }
-  },
-  "hint": {
-    "scroll": "Role a página ou use as setas para mudar de seção"
   },
   "a11y": {
     "skipToContent": "Ir para o conteúdo",

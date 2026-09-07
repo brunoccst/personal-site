@@ -6,7 +6,6 @@ import { SECTIONS, findSectionByPath, indexOfSection } from '../../config/sectio
 import { useSectionNavigation } from '../../hooks/useSectionNavigation';
 import { Brand } from '../Brand/Brand';
 import { ContentPanel } from '../ContentPanel/ContentPanel';
-import { ScrollHint } from '../ScrollHint/ScrollHint';
 import { SideNav } from '../SideNav/SideNav';
 import styles from './Layout.module.scss';
 
@@ -52,8 +51,6 @@ export function Layout() {
             <ContentPanel panelRef={panelRef} label={sectionLabel} />
           </div>
         </div>
-
-        <ScrollHint visible={currentIndex < SECTIONS.length - 1} />
       </main>
 
       <p className="visually-hidden" role="status" aria-live="polite">

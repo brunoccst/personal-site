@@ -5,9 +5,6 @@ import { ThemeProvider } from '@mui/material/styles';
 import { createAppTheme } from './createAppTheme';
 import { ThemeModeContext, type ThemeMode } from './themeContext';
 
-// The theme object does not depend on the mode, so it is built once.
-const theme = createAppTheme();
-
 const STORAGE_KEY = 'portfolio.theme';
 
 // Returns the stored mode, then the operating system preference, then 'dark'.
@@ -39,6 +36,7 @@ export function AppThemeProvider({ children }: { children: ReactNode }) {
     setMode((current) => (current === 'dark' ? 'light' : 'dark'));
   }, []);
 
+  const theme = useMemo(() => createAppTheme(mode), [mode]);
   const contextValue = useMemo(() => ({ mode, toggleMode }), [mode, toggleMode]);
 
   return (

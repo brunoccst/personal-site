@@ -8,9 +8,6 @@
     "separator": "|",
     "role": "Software Engineer & Team Lead"
   },
-  "intro": {
-    "skip": "Skip the introduction"
-  },
   "nav": {
     "label": "Portfolio sections",
     "about": "About me",
@@ -21,12 +18,9 @@
     "label": "Site options",
     "language": "Switch language to Portuguese",
     "theme": {
-      "toDark": "Switch to the black theme",
-      "toLight": "Switch to the grey theme"
+      "toDark": "Switch to the dark theme",
+      "toLight": "Switch to the light theme"
     }
-  },
-  "hint": {
-    "scroll": "Scroll or use the arrow keys to move between sections"
   },
   "a11y": {
     "skipToContent": "Skip to content",
