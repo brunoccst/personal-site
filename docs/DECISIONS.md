@@ -22,10 +22,9 @@ which is not something a redesign should do as a side effect.
 
 ### Keeping the `portfolio.web` folder
 
-The Netlify project `brunoccst` (site ID `ac440973-f6e4-4d25-b49a-b5e98d166b28`)
-was already wired to this repository with `portfolio.web` as its base directory.
-Keeping the folder name means the existing project keeps deploying without
-anyone touching the Netlify dashboard.
+The Netlify project `brunoccst` was already wired to this repository with
+`portfolio.web` as its base directory. Keeping the folder name means the
+existing project keeps deploying without anyone touching the Netlify dashboard.
 
 `netlify.toml` was added on top of that. Settings in the file override the ones
 stored in the dashboard, so the build is reproducible from the repository alone
