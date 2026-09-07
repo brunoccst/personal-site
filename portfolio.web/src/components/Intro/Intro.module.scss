@@ -1,10 +1,17 @@
 @use '../../styles/mixins' as m;
 @use '../../styles/variables' as v;
 
-$enter-delay: 200ms;
+// The separator brackets the whole sequence: it fades in before the words
+// arrive and out after they have gone, and is quicker than they are.
+$separator-duration: 350ms;
+
 $enter-duration: 1200ms;
-$exit-duration: 900ms;
-$separator-duration: 600ms;
+// The words wait for the separator to finish fading in.
+$enter-delay: $separator-duration;
+
+$words-exit-duration: 900ms;
+// The intro stays mounted until the separator has faded out behind the words.
+$exit-duration: $words-exit-duration + $separator-duration;
 
 // Space between each half and the separator.
 $gap: 0.45em;
@@ -100,8 +107,6 @@ $reach-neg: -$reach;
   color: var(--color-accent);
   font-weight: 200;
   opacity: 0;
-  transform: scaleY(0.4);
-  transform-origin: center;
 }
 
 // Horizontal stand-in for the pipe character on narrow screens.
@@ -111,7 +116,6 @@ $reach-neg: -$reach;
   height: 1px;
   background-color: var(--color-accent);
   opacity: 0;
-  transform: scaleX(0.4);
 }
 
 // --- Entering: the separator draws first, then both halves slide out of it ---
@@ -127,7 +131,7 @@ $reach-neg: -$reach;
 
   .separatorGlyph,
   .separatorBar {
-    animation: separator-in $separator-duration v.$ease-out forwards;
+    animation: separator-in $separator-duration linear forwards;
   }
 }
 
@@ -135,17 +139,19 @@ $reach-neg: -$reach;
 
 .intro[data-phase='exit'] {
   .name {
-    animation: name-out $exit-duration v.$ease-in-out forwards;
+    animation: name-out $words-exit-duration v.$ease-in-out forwards;
   }
 
   .role {
-    animation: role-out $exit-duration v.$ease-in-out forwards;
+    animation: role-out $words-exit-duration v.$ease-in-out forwards;
   }
 
-  // Holds until the text is back inside, then clears.
+  // Starts only once both halves have gone, so the separator is the last
+  // thing on screen. `both` is required: during the delay the element would
+  // otherwise fall back to its base `opacity: 0` and blink out immediately.
   .separatorGlyph,
   .separatorBar {
-    animation: separator-out 500ms v.$ease-in-out 400ms forwards;
+    animation: separator-out $separator-duration linear $words-exit-duration both;
   }
 }
 
@@ -208,25 +214,26 @@ $reach-neg: -$reach;
 @keyframes separator-in {
   from {
     opacity: 0;
-    transform: scaleY(0.4) scaleX(0.4);
   }
   to {
     opacity: 1;
-    transform: scaleY(1) scaleX(1);
   }
 }
 
 @keyframes separator-out {
+  from {
+    opacity: 1;
+  }
   to {
     opacity: 0;
-    transform: scaleY(0.4) scaleX(0.4);
   }
 }
 
-// Holds the backdrop solid while the text slides back, then clears it.
+// Holds the backdrop solid while the words slide back, then clears it while
+// the separator fades.
 @keyframes backdrop-out {
   0%,
-  70% {
+  76% {
     opacity: 1;
   }
   100% {

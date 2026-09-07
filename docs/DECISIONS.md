@@ -323,18 +323,30 @@ being clipped horizontally.
 
 | Moment | What happens |
 | --- | --- |
-| 0–600ms | The `\|` fades and scales in |
-| 200–1400ms | Both halves slide out of the pipe into place |
-| 3200ms | The animation reverses; the page mounts behind the intro |
-| 3830ms | Backdrop starts clearing |
-| 4100ms | Intro is removed from the tree |
+| 0–350ms | The `\|` fades in |
+| 350–1550ms | Both halves slide out of the pipe into place |
+| 3200ms | The halves start sliding back; the page mounts behind the intro |
+| 4100ms | Both halves are gone; the `\|` starts fading out |
+| 4150ms | Backdrop starts clearing |
+| 4450ms | The `\|` has gone and the intro is removed from the tree |
+
+The separator brackets the sequence. It fades in before the words arrive and out
+after they have left, and at 350ms it is roughly a third of their duration, so
+it reads as the thing they come from rather than as another moving part.
+
+That ordering needs `animation-fill-mode: both` on the separator's leaving
+animation, not `forwards`. The animation is delayed by the full length of the
+words' exit, and during a delay an element falls back to its own style rules —
+here `opacity: 0`. With `forwards` alone the pipe blinked out the instant the
+exit began and reappeared 900ms later to fade; `both` holds the `from` keyframe
+through the delay.
 
 The exit is the exact reverse of the entrance: each half slides back into the
 `|` and the separator fades last, once the text is back inside it. An earlier
 version had the two halves flying apart instead, which read as the page opening
 up but was not what "the opposite direction" describes.
 
-The page is mounted at 3200ms rather than at 4100ms. An earlier version waited
+The page is mounted at 3200ms rather than at 4450ms. An earlier version waited
 for the intro to unmount, which left roughly 200ms of empty background between
 the two. Mounting the page behind the still-opaque backdrop makes the two
 cross-fade instead.
@@ -346,8 +358,9 @@ than a slide.
 ### The intro cannot be skipped
 
 An earlier version had a skip button and an <kbd>Esc</kbd> handler. Both are
-gone: at about four seconds the opening is short enough that an escape hatch was
-more clutter than help, and the button competed with the text it sat under.
+gone: at about four and a half seconds the opening is short enough that an
+escape hatch was more clutter than help, and the button competed with the text
+it sat under.
 
 The reduced-motion bypass stays. That is an accessibility requirement rather
 than a convenience, and it removes the intro entirely.

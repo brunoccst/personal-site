@@ -176,8 +176,8 @@ that more sections exist. Nobody is told how to reach them without clicking.
 ### The intro cannot be skipped
 
 The skip button and the <kbd>Esc</kbd> handler are gone, so every visitor waits
-about four seconds before the content appears, on every full page load. Only the
-reduced-motion preference bypasses it.
+about four and a half seconds before the content appears, on every full page
+load. Only the reduced-motion preference bypasses it.
 
 ### Reduced motion removes the intro rather than simplifying it
 

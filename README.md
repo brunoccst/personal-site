@@ -124,8 +124,8 @@ rather than over it.
    the two cross-fade.
 3. `done` — the intro is removed from the React tree.
 
-The intro runs for about four seconds and cannot be skipped. It is dropped
-entirely when the operating system asks for reduced motion.
+The intro runs for about four and a half seconds and cannot be skipped. It is
+dropped entirely when the operating system asks for reduced motion.
 
 ### Moving between sections
 
