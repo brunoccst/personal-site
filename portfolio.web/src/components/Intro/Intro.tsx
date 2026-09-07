@@ -49,9 +49,9 @@ export function Intro({ onExitStart, onFinish }: IntroProps) {
   return (
     <div className={styles.intro} data-phase={phase}>
       <p className={styles.line}>
-        {/* Each half is clipped to its own box, so it stays behind the
-            separator until it has slid out. */}
-        <span className={styles.mask}>
+        {/* Each half is clipped up to the separator, so it stays hidden behind
+            the pipe until it has slid out. */}
+        <span className={`${styles.mask} ${styles.maskStart}`}>
           <span className={styles.name}>{t('identity.name')}</span>
         </span>
 
@@ -60,7 +60,7 @@ export function Intro({ onExitStart, onFinish }: IntroProps) {
         </span>
         <span className={styles.separatorBar} aria-hidden="true" />
 
-        <span className={styles.mask}>
+        <span className={`${styles.mask} ${styles.maskEnd}`}>
           <span className={styles.role}>{t('identity.role')}</span>
         </span>
       </p>

@@ -106,12 +106,16 @@ Inside the frame:
 
 `components/Intro/Intro.tsx` covers the screen when the app first mounts.
 
-The name and the role each sit inside a mask element that is exactly as wide as
-the text. Each half starts pushed fully outside its own mask — the name to the
-right, the role to the left — which hides it behind the `|` between them. They
-then slide to `translateX(0)`. Because the mask stays put while the text moves
-inside it, neither half can ever cross the separator. After a pause the
-animation reverses and both slide back into the `|`.
+The name and the role each sit inside a mask element. Each mask covers its own
+text and reaches across the gap to the `|`, so its clip edge lands on the
+separator. Each half starts pushed fully outside its mask — the name to the
+right, the role to the left — which hides it behind the `|`, then slides to
+`translateX(0)`. Because the mask stays put while the text moves inside it,
+neither half can cross the separator, and both appear to come out of the
+character itself. After a pause the animation reverses and both slide back in.
+
+The `|` is raised above the masks with `z-index`, so the text passes behind it
+rather than over it.
 
 `App.tsx` tracks the intro with a `stage` value:
 
