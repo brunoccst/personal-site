@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { SECTIONS } from '../../config/sections';
 import styles from './SideNav.module.scss';
 
-// Vertical list of the portfolio sections. The active entry is highlighted and
+// Vertical list of the site sections. The active entry is highlighted and
 // marked with an anchor bar.
 export function SideNav() {
   const { t } = useTranslation();

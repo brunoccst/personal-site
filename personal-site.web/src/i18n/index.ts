@@ -10,7 +10,7 @@ export type Language = (typeof SUPPORTED_LANGUAGES)[number];
 
 export const DEFAULT_LANGUAGE: Language = 'en';
 
-const STORAGE_KEY = 'portfolio.language';
+const STORAGE_KEY = 'personal-site.language';
 
 // Returns the stored language, then the browser language, then the default.
 function detectLanguage(): Language {

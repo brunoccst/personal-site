@@ -1,7 +1,7 @@
 # Build settings for the Netlify project `brunoccst`.
 
 [build]
-  base = "portfolio.web"
+  base = "personal-site.web"
   command = "npm run build"
   publish = "dist"
 
