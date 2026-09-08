@@ -7,9 +7,13 @@
     stroke-linecap="round"
     stroke-linejoin="round"
   >
-    <!-- B without its vertical stem: the two bowls alone read as a 3 -->
-    <path d="M14 18 C28 13, 34 28, 20 32 C34 36, 28 51, 14 46" />
-    <!-- C -->
-    <path d="M50 21 C44 17, 36 21, 36 32 C36 43, 44 47, 50 43" />
+    <!-- B: the stem is broken either side of the waist, so the letter keeps its
+         silhouette while the vertical stays interrupted -->
+    <path d="M13 17 L13 27" />
+    <path d="M13 37 L13 47" />
+    <path d="M13 17 H21 C27 17, 29 20, 29 24 C29 28, 27 31.5, 21 31.5 H13" />
+    <path d="M13 31.5 H22 C28 31.5, 30 35, 30 39 C30 43, 28 47, 22 47 H13" />
+    <!-- C, matched to the B's height so the pair reads as capitals -->
+    <path d="M51 21 C44 15.5, 36 20.5, 36 32 C36 43.5, 44 48.5, 51 43" />
   </g>
 </svg>
