@@ -121,7 +121,7 @@ regression would be easy to introduce and hard to notice.
 ### Region variants collapse to the base language
 
 `pt-BR` and `pt-PT` both resolve to `pt`, and the Portuguese file uses Brazilian
-spelling and vocabulary ("Engenheiro de Software & Líder de Equipe"). A visitor
+spelling and vocabulary ("Líder de Equipe & Engenheiro de Software"). A visitor
 in Portugal gets Brazilian Portuguese.
 
 ### Nothing checks that the two locale files match
