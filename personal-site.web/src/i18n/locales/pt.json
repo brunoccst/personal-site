@@ -33,7 +33,7 @@
       "title": "Sobre mim",
       "kicker": "Alemanha",
       "paragraphs": [
-        "Sou engenheiro de software e moro na Alemanha. Nasci no Brasil e comecei a carreira por lá; aos 21 anos, um antigo empregador me convidou para trabalhar na sede alemã, e estou por aqui desde então.",
+        "Sou engenheiro de software e moro na Alemanha. Nasci no Brasil e comecei a carreira por lá, na subsidiária brasileira de uma empresa alemã. Fui convidado para a sede quando tinha 21 anos; voltei um ano depois para terminar a graduação e, em 2019, retornei em definitivo.",
         "Trabalho com a stack inteira, mas é no front-end que me sinto mais em casa. Na DocuWare, lidero o time de Client Solutions, responsável pelos portais self-service usados pelos nossos parceiros e clientes diretos. Hoje a maior parte do meu tempo vai para as pessoas e o planejamento, mas ainda escrevo código em cerca de um quinto dele — ASP.NET Core e F# no back-end, React e TypeScript no front, rodando no Azure.",
         "Sou comunicativo e gosto de trabalhar em equipe; acredito que juntos somos mais fortes. Procuro ser organizado e gosto de compartilhar o que sei. Sou bacharel em Ciência da Computação pela PUCRS e falo português como língua materna e inglês fluente, além de espanhol e alemão.",
         "Longe do teclado, costumo estar tocando guitarra, jogando, assistindo a uma série ou tomando um mate no parque. Minhas melhores lembranças são as que têm minha família e meus amigos por perto. Se eu tornei a vida de alguém melhor, então valeu a pena."
@@ -87,8 +87,8 @@
           "period": "Mai 2016 — Nov 2020",
           "role": "Engenheiro de Software",
           "organisation": "MECOMO AG",
-          "location": "Alemanha",
-          "summary": "Desenvolvedor full-stack em uma solução de telemetria, num time global entre Brasil e Alemanha. Entrei pelo escritório brasileiro e depois fui convidado a me mudar para a sede.",
+          "location": "Brasil & Alemanha",
+          "summary": "Entrei na MECOM do Brasil, subsidiária brasileira do grupo, como engenheiro júnior e evoluí para uma função full-stack na plataforma de telemetria — uma aplicação web de monitoramento de dados ao vivo e geração de relatórios. Desenvolvi novas funcionalidades, mantive o código existente e atendi demandas de várias áreas, trabalhando ora no escritório brasileiro, ora na sede alemã.",
           "stack": [
             "ASP.NET Framework",
             "ASP.NET MVC",

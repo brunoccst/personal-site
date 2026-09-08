@@ -19,17 +19,28 @@ single DocuWare role of "Software Engineer" running to the present, when the
 role became Team Lead in April 2024. Everything before November 2020 still rests
 on the CV alone, and the CV has already been demonstrated to lag reality.
 
-### The MECOMO entry does not match LinkedIn's structure
+### The MECOMO entry flattens four roles into one
 
-LinkedIn splits MECOMO AG into two roles, one of them Nov 2019 – Nov 2020 in
-Germany, described as following a relocation after the bachelor's degree. The
-earlier of the two was cut off in the supplied screenshot, so the site keeps the
-CV's single entry spanning May 2016 – Nov 2020. The totals agree; the shape does
-not.
+LinkedIn lists four consecutive roles at MECOMO AG: junior engineer at the
+Brazilian subsidiary from May 2016, a year at the German headquarters from
+January 2018, a year back in Brazil from December 2018 to finish the degree, and
+a return to Germany from November 2019 until the move to DocuWare.
 
-That also puts a question over the About text, which says a former employer
-brought its author to Germany at 21 and that they have been there since.
-LinkedIn's "relocated back to Germany" implies the stay was not continuous.
+The site shows one entry for the whole span. The four differ mainly by which
+office the work happened in, and the site gives locations at country level only,
+so splitting them would produce near-identical rows distinguished by a detail
+that has deliberately been removed. The promotion from junior is carried in the
+summary text instead.
+
+The cost is that the entry no longer shows the shape of the progression, and a
+reader comparing the site against LinkedIn will find four roles there and one
+here.
+
+### The MECOMO technology list is still the CV's
+
+LinkedIn's junior-engineer entry ends with "The tech stack included:" and the
+list itself was cut off in the supplied screenshot. The tags on that entry are
+therefore still the CV's, unverified, while its prose has been corrected.
 
 ### No images or icons in the sections
 

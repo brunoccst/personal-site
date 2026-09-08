@@ -10,15 +10,14 @@ listed in [KNOWN-ISSUES.md](KNOWN-ISSUES.md).
 The lorem ipsum is gone; every section is now written from the CV. What remains
 is verification, because the CV was the only source available.
 
-- Supply the earlier MECOMO role from LinkedIn. The site still carries the CV's
-  single entry for May 2016 – Nov 2020, while LinkedIn splits it in two; the
-  first of those was cut off in the screenshot used for the cross-check.
-- Settle whether the stay in Germany has been continuous. The About text says it
-  has, LinkedIn's "relocated back to Germany" suggests otherwise, and only one of
-  them can be right.
-- Cross-check everything before Nov 2020. The DocuWare entries have been checked
-  against LinkedIn and the CV turned out to be stale; the older roles have had no
-  such check.
+- Supply the MECOMO technology list from LinkedIn. Its prose has been corrected
+  against the profile, but the tags are still the CV's — the list was cut off in
+  the screenshot used for the cross-check.
+- Cross-check the two roles before May 2016. Everything from MECOMO onwards has
+  now been checked against LinkedIn, and the CV proved stale about DocuWare; the
+  DB Server and internship entries have had no such check.
+- Decide whether MECOMO should show its four LinkedIn roles rather than one
+  flattened entry.
 - Read the Portuguese as a native speaker would. It is a translation rather than
   a copy, but the register was chosen without a second opinion.
 - Decide the order of the words in the heading. It reads "Software Engineer &
