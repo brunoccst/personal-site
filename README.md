@@ -1,8 +1,8 @@
-# Portfolio
+# Personal site
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/ac440973-f6e4-4d25-b49a-b5e98d166b28/deploy-status)](https://app.netlify.com/sites/brunoccst/deploys)
 
-Personal portfolio of Bruno Carvalho da Costa. Live at
+Personal site of Bruno Carvalho da Costa. Live at
 [brunoccst.netlify.app](https://brunoccst.netlify.app/).
 
 It is a single-page application: one HTML file loads a React app that swaps the
@@ -24,7 +24,7 @@ node -v && npm -v
 ## Running it locally
 
 ```bash
-cd portfolio.web && npm install && npm run dev
+cd personal-site.web && npm install && npm run dev
 ```
 
 The dev server prints a URL (usually `http://localhost:5173`). It reloads the
@@ -32,31 +32,31 @@ browser when you save a file.
 
 ## npm scripts
 
-All scripts run from the `portfolio.web` folder.
+All scripts run from the `personal-site.web` folder.
 
 | Script | What it does |
 | --- | --- |
 | `npm run dev` | Starts the development server with hot reload. |
-| `npm run build` | Type-checks the code, then writes the production files to `portfolio.web/dist`. |
+| `npm run build` | Type-checks the code, then writes the production files to `personal-site.web/dist`. |
 | `npm run preview` | Serves the contents of `dist` so you can check the production build. |
 | `npm run typecheck` | Runs the TypeScript compiler without producing files. |
 
 ## Repository layout
 
 ```
-portfolio/
+personal-site/
 ├── docs/                 Written notes about the project
 │   ├── DECISIONS.md      Why the project is built this way
 │   ├── KNOWN-ISSUES.md   Things that are wrong or incomplete
 │   └── NEXT-STEPS.md     Planned work
 ├── netlify.toml          Build and hosting settings for Netlify
-└── portfolio.web/        The React application
+└── personal-site.web/        The React application
 ```
 
 ## Application layout
 
 ```
-portfolio.web/
+personal-site.web/
 ├── index.html            Page shell; loads src/main.tsx
 ├── public/               Files copied to the site root as-is
 ├── vite.config.ts        Build tool configuration
@@ -65,7 +65,7 @@ portfolio.web/
     ├── main.tsx          Creates the React root and wraps the app in providers
     ├── App.tsx           Intro sequence and the route table
     ├── components/       UI pieces, one folder per component
-    ├── sections/         Content of the three portfolio sections
+    ├── sections/         Content of the three site sections
     ├── config/           Section list shared by the router and the navigation
     ├── hooks/            Reusable pieces of behaviour
     ├── i18n/             Translation setup and the locale files
@@ -204,7 +204,7 @@ values on `:root` and overrides the colour tokens under `[data-theme='dark']`.
 Nothing else needs to know which theme is active — every component reads colours
 through `var(--color-*)`.
 
-The chosen mode is saved in `localStorage` under `portfolio.theme`. Without a
+The chosen mode is saved in `localStorage` under `personal-site.theme`. Without a
 saved value, the app follows the operating system setting.
 
 ### Font sizes
@@ -234,7 +234,7 @@ English value is shown.
 
 `src/i18n/index.ts` picks the starting language in this order:
 
-1. the value saved in `localStorage` under `portfolio.language`
+1. the value saved in `localStorage` under `personal-site.language`
 2. the browser's preferred languages
 3. English
 
@@ -289,7 +289,7 @@ array, so nothing else needs changing.
 Netlify builds the site from the `main` branch of this repository. The settings
 live in `netlify.toml` at the repository root:
 
-- `base` is `portfolio.web`, so Netlify runs the build inside that folder.
+- `base` is `personal-site.web`, so Netlify runs the build inside that folder.
 - `command` is `npm run build`.
 - `publish` is `dist`.
 - A catch-all redirect returns `index.html` with status 200 for every path. This

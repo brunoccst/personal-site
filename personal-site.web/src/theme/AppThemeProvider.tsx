@@ -5,7 +5,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import { createAppTheme } from './createAppTheme';
 import { ThemeModeContext, type ThemeMode } from './themeContext';
 
-const STORAGE_KEY = 'portfolio.theme';
+const STORAGE_KEY = 'personal-site.theme';
 
 // Returns the stored mode, then the operating system preference, then 'dark'.
 function detectMode(): ThemeMode {

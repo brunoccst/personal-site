@@ -20,16 +20,26 @@ kept.
 survive. Deleting a licence file changes the legal terms of the repository,
 which is not something a redesign should do as a side effect.
 
-### Keeping the `portfolio.web` folder
+### "Personal site" rather than "portfolio"
 
-The Netlify project `brunoccst` was already wired to this repository with
-`portfolio.web` as its base directory. Keeping the folder name means the
-existing project keeps deploying without anyone touching the Netlify dashboard.
+The repository, the app folder and the prose all said *portfolio*. A portfolio
+shows work — projects someone built, with something to look at. This site shows
+a biography, a job history and two links, which is a CV rendered as a web page.
+The word was describing an intention rather than the thing that exists.
 
-`netlify.toml` was added on top of that. Settings in the file override the ones
-stored in the dashboard, so the build is reproducible from the repository alone
-and a future move to another host or another Netlify project does not depend on
-undocumented dashboard state.
+Renaming was chosen over the alternative of making the word true by adding a
+projects section. That section is still worth building, but the label should
+match what is on the page today rather than what might be there later.
+
+`netlify.toml` pins the build settings, so renaming the app folder is a one-line
+change to `base` in that file. Settings there override the ones stored in the
+dashboard, which is also why the build stays reproducible from the repository
+alone and does not depend on undocumented dashboard state.
+
+The Netlify project itself was deliberately **not** renamed. It is called
+`brunoccst` and serves `brunoccst.netlify.app` — the name is the site owner's,
+not the word being replaced. Renaming it would swap a personal URL for a generic
+one and break every link already shared, in exchange for nothing.
 
 ---
 
@@ -433,7 +443,7 @@ one. See [KNOWN-ISSUES.md](KNOWN-ISSUES.md).
 The CV carries a mobile number, a home address and an email address. None of the
 three is on the site, and none is in the repository.
 
-A portfolio is a public, indexed page. A home address on one is a personal
+A personal site is a public, indexed page. A home address on one is a personal
 safety question rather than a privacy preference, and a phone number attracts
 recruiters and spam callers indefinitely, with no way to withdraw it once it has
 been scraped. The email was included at first, on the reasoning that some direct
