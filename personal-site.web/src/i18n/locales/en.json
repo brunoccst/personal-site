@@ -34,7 +34,7 @@
       "kicker": "Germany",
       "paragraphs": [
         "I'm a software engineer based in Germany. I was born in Brazil and started my career there; a former employer invited me to move to their German headquarters when I was 21, and I've been here since.",
-        "I work across the stack, though the front end is where I'm most at home. At DocuWare I'm part of the Client Solutions team, maintaining and developing the solutions that sit around the core product — mostly ASP.NET Core and F# behind, React and TypeScript in front, running on Azure.",
+        "I work across the stack, though the front end is where I'm most at home. At DocuWare I lead the Client Solutions team, which builds the self-service portals our partners and direct customers use. Most of my time goes to the people and the planning now, but I still write code for about a fifth of it — ASP.NET Core and F# behind, React and TypeScript in front, running on Azure.",
         "I'm communicative and I enjoy working in a team; I believe that together we're stronger. I try to stay organised, and I like sharing what I know. I hold a bachelor's degree in Computer Science from PUCRS, and I speak Portuguese natively and English fluently, alongside Spanish and German.",
         "Away from the keyboard I'm usually playing guitar, gaming, watching a series, or having a mate tea in a park. My happiest memories are the ones with my family and friends around. If I made someone's life better, then it was worth it."
       ]
@@ -44,22 +44,43 @@
       "kicker": "2014 — present",
       "items": [
         {
-          "period": "Nov 2020 — Present",
+          "period": "Apr 2024 — Present",
+          "role": "Team Lead",
+          "organisation": "DocuWare",
+          "location": "Germany",
+          "summary": "I lead the Client Solutions team, which builds the self-service business portals used by DocuWare's partners and direct customers. I keep projects moving and the team supported: mentoring, hiring and onboarding, balancing workloads, keeping product owners, developers and operations aligned, and taking the first call when something needs escalating. I still write code for about a fifth of my time.",
+          "stack": [
+            "Team leadership",
+            "Mentoring",
+            "Hiring & onboarding",
+            "Scrum",
+            "Stakeholder alignment",
+            "React",
+            "TypeScript",
+            "ASP.NET Core"
+          ]
+        },
+        {
+          "period": "Nov 2020 — Apr 2024",
           "role": "Software Engineer",
           "organisation": "DocuWare",
           "location": "Germany",
-          "summary": "Part of the Client Solutions team, maintaining and developing the range of solutions that support the core product and the clients using it.",
+          "summary": "Full-stack engineer with a focus on the front end, on the Client Solutions team — the range of solutions that support the company's ecosystem. I contributed to several scalable projects, from the database through to the interface.",
           "stack": [
             "ASP.NET Core",
+            "C#",
             "F#",
-            "React",
+            "SQL",
             "TypeScript",
+            "JavaScript",
             "SCSS",
+            "React",
             "StencilJS",
-            "Microsoft Azure",
-            "Azure DevOps",
+            "Vaadin",
+            "Microservices",
+            "CI/CD",
             "Terraform",
-            "Microservices"
+            "Azure DevOps"
           ]
         },
         {

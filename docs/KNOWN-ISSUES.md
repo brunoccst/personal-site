@@ -7,20 +7,29 @@ code. Planned work is in [NEXT-STEPS.md](NEXT-STEPS.md).
 
 ## Content
 
-### The content is sourced only from the CV
+### Only the DocuWare entries are corroborated
 
-Every section is written from `CV_BrunoCarvalhoDaCosta.pdf`. The intended
-cross-check against the LinkedIn profile did not happen: the profile is behind a
-login wall and returns a sign-in page to any unauthenticated fetch. Nothing in
-the content is corroborated by a second source, so anything the CV has outdated,
-the site now has outdated too.
+The content was written from the CV. The LinkedIn profile could not be fetched —
+it is behind a login wall and returns a sign-in page to any unauthenticated
+request — so the cross-check was done from screenshots supplied by hand, and
+they covered only the DocuWare roles and the tail of the MECOMO one.
 
-### The headline claims a title the CV does not
+Those entries are now accurate and the CV was wrong about them: it listed a
+single DocuWare role of "Software Engineer" running to the present, when the
+role became Team Lead in April 2024. Everything before November 2020 still rests
+on the CV alone, and the CV has already been demonstrated to lag reality.
 
-The site heading reads "Software Engineer & Team Lead", but the CV gives the
-current DocuWare role as "Software Engineer" with no mention of a lead position.
-The heading is the wording originally supplied for the design; the experience
-entry follows the CV. One of the two is stale and they should be reconciled.
+### The MECOMO entry does not match LinkedIn's structure
+
+LinkedIn splits MECOMO AG into two roles, one of them Nov 2019 – Nov 2020 in
+Germany, described as following a relocation after the bachelor's degree. The
+earlier of the two was cut off in the supplied screenshot, so the site keeps the
+CV's single entry spanning May 2016 – Nov 2020. The totals agree; the shape does
+not.
+
+That also puts a question over the About text, which says a former employer
+brought its author to Germany at 21 and that they have been there since.
+LinkedIn's "relocated back to Germany" implies the stay was not continuous.
 
 ### No images or icons in the sections
 

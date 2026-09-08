@@ -34,7 +34,7 @@
       "kicker": "Alemanha",
       "paragraphs": [
         "Sou engenheiro de software e moro na Alemanha. Nasci no Brasil e comecei a carreira por lá; aos 21 anos, um antigo empregador me convidou para trabalhar na sede alemã, e estou por aqui desde então.",
-        "Trabalho com a stack inteira, mas é no front-end que me sinto mais em casa. Na DocuWare, faço parte do time de Client Solutions, mantendo e desenvolvendo as soluções que dão suporte ao produto principal — em geral ASP.NET Core e F# no back-end, React e TypeScript no front, rodando no Azure.",
+        "Trabalho com a stack inteira, mas é no front-end que me sinto mais em casa. Na DocuWare, lidero o time de Client Solutions, responsável pelos portais self-service usados pelos nossos parceiros e clientes diretos. Hoje a maior parte do meu tempo vai para as pessoas e o planejamento, mas ainda escrevo código em cerca de um quinto dele — ASP.NET Core e F# no back-end, React e TypeScript no front, rodando no Azure.",
         "Sou comunicativo e gosto de trabalhar em equipe; acredito que juntos somos mais fortes. Procuro ser organizado e gosto de compartilhar o que sei. Sou bacharel em Ciência da Computação pela PUCRS e falo português como língua materna e inglês fluente, além de espanhol e alemão.",
         "Longe do teclado, costumo estar tocando guitarra, jogando, assistindo a uma série ou tomando um mate no parque. Minhas melhores lembranças são as que têm minha família e meus amigos por perto. Se eu tornei a vida de alguém melhor, então valeu a pena."
       ]
@@ -44,22 +44,43 @@
       "kicker": "2014 — presente",
       "items": [
         {
-          "period": "Nov 2020 — Atual",
+          "period": "Abr 2024 — Atual",
+          "role": "Líder de Equipe",
+          "organisation": "DocuWare",
+          "location": "Alemanha",
+          "summary": "Lidero o time de Client Solutions, responsável pelos portais self-service usados pelos parceiros e clientes diretos da DocuWare. Cuido para que os projetos andem e que o time tenha suporte: mentoria, contratação e onboarding, equilíbrio da carga de trabalho, alinhamento entre product owners, desenvolvimento e operações, e sou o primeiro ponto de contato quando algo precisa ser escalado. Ainda escrevo código em cerca de um quinto do meu tempo.",
+          "stack": [
+            "Liderança de equipe",
+            "Mentoria",
+            "Contratação & onboarding",
+            "Scrum",
+            "Alinhamento com stakeholders",
+            "React",
+            "TypeScript",
+            "ASP.NET Core"
+          ]
+        },
+        {
+          "period": "Nov 2020 — Abr 2024",
           "role": "Engenheiro de Software",
           "organisation": "DocuWare",
           "location": "Alemanha",
-          "summary": "Faço parte do time de Client Solutions, mantendo e desenvolvendo as diversas soluções que dão suporte ao produto principal e aos clientes que o utilizam.",
+          "summary": "Engenheiro full-stack com foco em front-end no time de Client Solutions, responsável pelas soluções que sustentam o ecossistema da empresa. Contribuí em vários projetos escaláveis, do banco de dados até a interface.",
           "stack": [
             "ASP.NET Core",
+            "C#",
             "F#",
-            "React",
+            "SQL",
             "TypeScript",
+            "JavaScript",
             "SCSS",
+            "React",
             "StencilJS",
-            "Microsoft Azure",
-            "Azure DevOps",
+            "Vaadin",
+            "Microsserviços",
+            "CI/CD",
             "Terraform",
-            "Microsserviços"
+            "Azure DevOps"
           ]
         },
         {
