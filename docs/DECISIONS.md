@@ -431,12 +431,24 @@ against the LinkedIn profile was intended but not possible: the profile is
 served behind a login wall, and an unauthenticated fetch returns a sign-in page
 with no profile content on it.
 
-That matters for how much the content can be trusted. Nothing here is
-corroborated, so the site inherits whatever the CV has out of date — including
-the job title, which the CV gives as "Software Engineer" while the site heading
-says "Software Engineer & Team Lead". The experience entry follows the CV
-because inventing a title and a start date would be worse than showing a stale
-one. See [KNOWN-ISSUES.md](KNOWN-ISSUES.md).
+The cross-check was eventually done from screenshots of the profile supplied by
+hand, and it was worth doing: the CV listed one DocuWare role of "Software
+Engineer" running to the present, when the role had become Team Lead in April
+2024, and it described a move to Germany as permanent when there had been a year
+back in Brazil in between. Everything from May 2016 onwards has now been
+corrected against the profile. The two roles before that still rest on the CV
+alone. See [KNOWN-ISSUES.md](KNOWN-ISSUES.md).
+
+### The heading leads with the current title
+
+The heading reads "Team Lead & Software Engineer". It was the other way round
+until the profile confirmed which title is current: leading the team is the job,
+and writing code is roughly a fifth of it.
+
+Both halves are kept rather than just the title. Dropping "Software Engineer"
+would misrepresent a lead who is still in the codebase every week, and for an
+engineering audience the second half is the part that says what kind of lead this
+is.
 
 ### No direct contact details anywhere
 

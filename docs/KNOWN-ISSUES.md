@@ -7,20 +7,40 @@ code. Planned work is in [NEXT-STEPS.md](NEXT-STEPS.md).
 
 ## Content
 
-### The content is sourced only from the CV
+### Only the DocuWare entries are corroborated
 
-Every section is written from `CV_BrunoCarvalhoDaCosta.pdf`. The intended
-cross-check against the LinkedIn profile did not happen: the profile is behind a
-login wall and returns a sign-in page to any unauthenticated fetch. Nothing in
-the content is corroborated by a second source, so anything the CV has outdated,
-the site now has outdated too.
+The content was written from the CV. The LinkedIn profile could not be fetched —
+it is behind a login wall and returns a sign-in page to any unauthenticated
+request — so the cross-check was done from screenshots supplied by hand, and
+they covered only the DocuWare roles and the tail of the MECOMO one.
 
-### The headline claims a title the CV does not
+Those entries are now accurate and the CV was wrong about them: it listed a
+single DocuWare role of "Software Engineer" running to the present, when the
+role became Team Lead in April 2024. Everything before November 2020 still rests
+on the CV alone, and the CV has already been demonstrated to lag reality.
 
-The site heading reads "Software Engineer & Team Lead", but the CV gives the
-current DocuWare role as "Software Engineer" with no mention of a lead position.
-The heading is the wording originally supplied for the design; the experience
-entry follows the CV. One of the two is stale and they should be reconciled.
+### The MECOMO entry flattens four roles into one
+
+LinkedIn lists four consecutive roles at MECOMO AG: junior engineer at the
+Brazilian subsidiary from May 2016, a year at the German headquarters from
+January 2018, a year back in Brazil from December 2018 to finish the degree, and
+a return to Germany from November 2019 until the move to DocuWare.
+
+The site shows one entry for the whole span. The four differ mainly by which
+office the work happened in, and the site gives locations at country level only,
+so splitting them would produce near-identical rows distinguished by a detail
+that has deliberately been removed. The promotion from junior is carried in the
+summary text instead.
+
+The cost is that the entry no longer shows the shape of the progression, and a
+reader comparing the site against LinkedIn will find four roles there and one
+here.
+
+### The MECOMO technology list is still the CV's
+
+LinkedIn's junior-engineer entry ends with "The tech stack included:" and the
+list itself was cut off in the supplied screenshot. The tags on that entry are
+therefore still the CV's, unverified, while its prose has been corrected.
 
 ### No images or icons in the sections
 
@@ -101,7 +121,7 @@ regression would be easy to introduce and hard to notice.
 ### Region variants collapse to the base language
 
 `pt-BR` and `pt-PT` both resolve to `pt`, and the Portuguese file uses Brazilian
-spelling and vocabulary ("Engenheiro de Software & Líder de Equipe"). A visitor
+spelling and vocabulary ("Líder de Equipe & Engenheiro de Software"). A visitor
 in Portugal gets Brazilian Portuguese.
 
 ### Nothing checks that the two locale files match

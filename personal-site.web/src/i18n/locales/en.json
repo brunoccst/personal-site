@@ -6,7 +6,7 @@
   "identity": {
     "name": "Bruno Carvalho da Costa",
     "separator": "|",
-    "role": "Software Engineer & Team Lead"
+    "role": "Team Lead & Software Engineer"
   },
   "nav": {
     "label": "Site sections",
@@ -33,8 +33,8 @@
       "title": "About me",
       "kicker": "Germany",
       "paragraphs": [
-        "I'm a software engineer based in Germany. I was born in Brazil and started my career there; a former employer invited me to move to their German headquarters when I was 21, and I've been here since.",
-        "I work across the stack, though the front end is where I'm most at home. At DocuWare I'm part of the Client Solutions team, maintaining and developing the solutions that sit around the core product — mostly ASP.NET Core and F# behind, React and TypeScript in front, running on Azure.",
+        "I'm a software engineer based in Germany. I was born in Brazil and started my career there, at the Brazilian subsidiary of a German company. They invited me to their headquarters when I was 21; I went back a year later to finish my degree, then returned in 2019 and have stayed since.",
+        "I work across the stack, though the front end is where I'm most at home. At DocuWare I lead the Client Solutions team, which builds the self-service portals our partners and direct customers use. Most of my time goes to the people and the planning now, but I still write code for about a fifth of it — ASP.NET Core and F# behind, React and TypeScript in front, running on Azure.",
         "I'm communicative and I enjoy working in a team; I believe that together we're stronger. I try to stay organised, and I like sharing what I know. I hold a bachelor's degree in Computer Science from PUCRS, and I speak Portuguese natively and English fluently, alongside Spanish and German.",
         "Away from the keyboard I'm usually playing guitar, gaming, watching a series, or having a mate tea in a park. My happiest memories are the ones with my family and friends around. If I made someone's life better, then it was worth it."
       ]
@@ -44,30 +44,51 @@
       "kicker": "2014 — present",
       "items": [
         {
-          "period": "Nov 2020 — Present",
+          "period": "Apr 2024 — Present",
+          "role": "Team Lead",
+          "organisation": "DocuWare",
+          "location": "Germany",
+          "summary": "I lead the Client Solutions team, which builds the self-service business portals used by DocuWare's partners and direct customers. I keep projects moving and the team supported: mentoring, hiring and onboarding, balancing workloads, keeping product owners, developers and operations aligned, and taking the first call when something needs escalating. I still write code for about a fifth of my time.",
+          "stack": [
+            "Team leadership",
+            "Mentoring",
+            "Hiring & onboarding",
+            "Scrum",
+            "Stakeholder alignment",
+            "React",
+            "TypeScript",
+            "ASP.NET Core"
+          ]
+        },
+        {
+          "period": "Nov 2020 — Apr 2024",
           "role": "Software Engineer",
           "organisation": "DocuWare",
           "location": "Germany",
-          "summary": "Part of the Client Solutions team, maintaining and developing the range of solutions that support the core product and the clients using it.",
+          "summary": "Full-stack engineer with a focus on the front end, on the Client Solutions team — the range of solutions that support the company's ecosystem. I contributed to several scalable projects, from the database through to the interface.",
           "stack": [
             "ASP.NET Core",
+            "C#",
             "F#",
-            "React",
+            "SQL",
             "TypeScript",
+            "JavaScript",
             "SCSS",
+            "React",
             "StencilJS",
-            "Microsoft Azure",
-            "Azure DevOps",
+            "Vaadin",
+            "Microservices",
+            "CI/CD",
             "Terraform",
-            "Microservices"
+            "Azure DevOps"
           ]
         },
         {
           "period": "May 2016 — Nov 2020",
           "role": "Software Engineer",
           "organisation": "MECOMO AG",
-          "location": "Germany",
-          "summary": "Full-stack developer on a telemetry solution, in a global team working across Brazil and Germany. I joined at the Brazilian office and was later invited to move to the headquarters.",
+          "location": "Brazil & Germany",
+          "summary": "I joined MECOM do Brasil, the group's Brazilian subsidiary, as a junior engineer and grew into a full-stack role on its telemetry platform — a web application for live data monitoring and report generation. I built new features, maintained existing code and handled requests from across the business, working from the Brazilian office and the German headquarters in turn.",
           "stack": [
             "ASP.NET Framework",
             "ASP.NET MVC",

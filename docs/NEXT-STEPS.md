@@ -10,12 +10,19 @@ listed in [KNOWN-ISSUES.md](KNOWN-ISSUES.md).
 The lorem ipsum is gone; every section is now written from the CV. What remains
 is verification, because the CV was the only source available.
 
-- Settle the job title. The heading says "Software Engineer & Team Lead", the CV
-  says "Software Engineer". If the lead role is current, update the DocuWare
-  entry in both locale files and add its start date.
+- Supply the MECOMO technology list from LinkedIn. Its prose has been corrected
+  against the profile, but the tags are still the CV's — the list was cut off in
+  the screenshot used for the cross-check.
+- Cross-check the two roles before May 2016. Everything from MECOMO onwards has
+  now been checked against LinkedIn, and the CV proved stale about DocuWare; the
+  DB Server and internship entries have had no such check.
+- Decide whether MECOMO should show its four LinkedIn roles rather than one
+  flattened entry.
 - Read the Portuguese as a native speaker would. It is a translation rather than
   a copy, but the register was chosen without a second opinion.
-- Check the DocuWare stack list still matches what the work actually involves.
+- Decide the order of the words in the heading. It reads "Software Engineer &
+  Team Lead", while the current role is Team Lead and coding is about a fifth of
+  the work.
 - Decide whether LinkedIn and GitHub are enough. No contact details appear
   anywhere on the site — phone, address and email were all deliberately left off
   a public page — so those two profiles are the only routes in. A contact form
