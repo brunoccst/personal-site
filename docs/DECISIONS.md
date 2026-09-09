@@ -113,17 +113,15 @@ What is rendered instead is a bordered box inset on all four sides, capped at
 
 ```scss
 --frame-inset: clamp(0.875rem, 3.2vmin, 2.75rem);
---frame-inset-top: clamp(3.25rem, 4vmin + 2.25rem, 5rem);
 ```
 
-At a typical desktop size the side inset lands near 2.5cm, matching the brief's
+At a typical desktop size the inset lands near 2.5cm, matching the brief's
 "a few centimeters".
 
-The top inset is deliberately larger than the other three. The system controls
-sit outside the frame in the top-right corner, and they need a band to live in.
-That asymmetry also satisfies the brief's requirement that the content be
-centred on the frame rather than on the window: because the frame is pushed
-down, its centre is not the window's centre.
+The inset is the same on all four sides. An earlier version made the top one
+larger to hold the system controls in a band above the frame; those controls
+have since moved inside it, so the asymmetry stopped earning its keep and the
+geometry collapsed to a single token.
 
 The inset is a token, so changing the shape later is a one-line edit.
 
@@ -140,24 +138,23 @@ rather than as a bug.
 
 This will fill in further once images and icons join the text.
 
-### The system controls share the frame's geometry
+### The system controls sit inside the frame
 
-The controls sit outside the frame, but their right edge has to line up with the
-frame's right border. Giving them `right: var(--frame-inset)` is not enough: the
-frame is also capped at `--frame-max-width` and centred, so on a viewport wider
-than that cap the frame's edge is further in than the raw inset.
+The language and theme buttons live in the top-right of the frame's padding box,
+sharing a flex row with the heading.
 
-The strip therefore repeats the frame's whole geometry — both insets, the same
-`max-width`, the same `margin-inline: auto` — and right-aligns its contents. The
-two edges then agree at every width. The strip takes `pointer-events: none` so
-that the empty part of it does not sit over the page, and the buttons take
-`pointer-events: auto` back.
+They used to sit outside it, which cost more than it looked. The strip had to
+restate the frame's whole geometry — both insets, the same `max-width`, the same
+`margin-inline: auto` — purely so its right edge would agree with the frame's
+border at every width, and it needed `pointer-events: none` so its empty half did
+not sit over the page. Inside the frame all of that disappears: the two edges
+line up because they are the same padding box.
 
-The last button also carries a negative right margin equal to its own padding,
-so what lines up with the border is the icon itself rather than the invisible
-edge of its hit area. That padding is set in the MUI theme under `sizeSmall`
-rather than in the stylesheet, because MUI's own `sizeSmall` rule is more
-specific than a CSS Modules class and would otherwise win.
+The last button still carries a negative right margin equal to its own padding,
+so what lines up with the text below is the icon rather than the invisible edge
+of its hit area. That padding is set in the MUI theme under `sizeSmall` rather
+than in the stylesheet, because MUI's own `sizeSmall` rule is more specific than
+a CSS Modules class and would otherwise win.
 
 For the same reason the frame's entrance animation fades without scaling. An
 earlier `scale(0.995)` pulled the frame's painted edge a few pixels away from
@@ -167,39 +164,61 @@ the controls for the duration of the animation.
 
 ## Colour and type
 
-### One light theme, one black theme
+### Deep space and a sunny sky
 
-The original brief asked for a dark page in both modes — pure black for dark,
-grey for light. That was revised: the light theme is now genuinely light, warm
-and pastel, and only the dark theme stays dark.
+The two themes are the same view at two times of day. Dark is deep space: a
+near-black blue (`#05080f`) with two distant coloured glows. Light is the sky
+seen from the ground on a clear day: a real blue (`#bcd9f5`) with soft white
+patches and one warm patch of sun.
 
-The light theme is built on a warm off-white (`#f0ede7` page, `#fbf9f6` frame)
-rather than pure white. Pure white against a near-black frame border is harsh at
-full screen brightness, and the slight warmth keeps the two themes recognisably
-the same design rather than two unrelated skins.
+Neither has any discrete object in it. A scattering of individual stars was
+tried in the dark theme and removed: at a pixel or two across they read as dust
+on the screen rather than as depth, and they competed with the text for
+attention every time the eye passed over them. What survives in both themes is
+the same idea — large, soft, shapeless washes of light — which is also what
+keeps the two themes recognisably one design.
 
-Each theme has one accent and no second colour. Light uses a muted bronze
-(`#8c6239`), dark a soft gold (`#d8b878`) — the same hue family at the two
-lightnesses each background needs. Keeping a single accent per theme is what
-lets it carry meaning: it marks the selected navigation entry, the section
+Both are drawn entirely with `radial-gradient` layers collected in a single
+`--celestial` custom property and painted on one fixed pseudo-element behind
+everything. No images, no canvas, no animation loop — the whole effect is one
+declaration per theme, which is what makes it cheap enough to justify.
+
+The white patches in the light theme are deliberately shapeless. The brief asked
+for the suggestion of cloud rather than drawn clouds, and soft-edged blobs read
+as light and haze where a cloud outline would read as an illustration.
+
+The frame is translucent over that background rather than opaque, so the sky and
+the glows carry through the whole page instead of being trapped in a thin margin
+around it. A `backdrop-filter` blur stops whatever sits behind the text from
+competing with it.
+
+The first attempt at the light theme was too pale to read as sky at all — the
+white patches swallowed the blue. The base was darkened and the patches pulled
+back until the blue survived behind them.
+
+Each theme still carries one accent. Light uses a deep sky blue (`#14548f`),
+dark a starlight gold (`#f0c878`). Keeping a single accent per theme is what
+lets it mean something: it marks the selected navigation entry, the section
 kicker and link hovers, and nothing else competes with it.
 
-Pastel here means the *surfaces* are pastel. The accent and the text are not:
-a genuinely pastel accent cannot reach 4.5:1 against an off-white background, so
-the accent is a desaturated mid-tone that reads as muted without failing
-contrast.
+A warm accent was tried for the light theme, on the reasoning that a sunny sky
+wants a sun-coloured highlight. It measured 4.42:1 against the frame, just under
+AA, so the blue was taken instead. That is why the sun appears in the background
+and not in the accent.
 
 ### Measured contrast ratios
 
-Computed against the frame background of each theme (`#fbf9f6` light,
-`#0a0b0c` dark):
+The frame is translucent, so what matters is the colour it composites to over
+the background behind it: `#e3effb` in light, `#0d1529` in dark. Those are the
+values measured against, and they are stored as `--color-surface` for the few
+surfaces that must stay opaque.
 
 | Token | Light theme | Dark theme | WCAG AA (4.5:1) |
 | --- | --- | --- | --- |
-| `--color-text` | 14.61:1 | 17.92:1 | Pass |
-| `--color-text-muted` | 6.10:1 | 7.14:1 | Pass |
-| `--color-text-faint` | 4.74:1 | 5.16:1 | Pass |
-| `--color-accent` | 5.10:1 | 10.36:1 | Pass |
+| `--color-text` | 13.60:1 | 15.50:1 | Pass |
+| `--color-text-muted` | 6.32:1 | 8.14:1 | Pass |
+| `--color-text-faint` | 4.72:1 | 5.67:1 | Pass |
+| `--color-accent` | 6.68:1 | 11.45:1 | Pass |
 
 `--color-text-faint` is the token to watch. It is the smallest, quietest text on
 the page and carries real content — the date range on each experience entry — so

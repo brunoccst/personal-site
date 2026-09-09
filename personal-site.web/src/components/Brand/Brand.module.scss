@@ -2,6 +2,8 @@
 @use '../../styles/variables' as v;
 
 .brand {
+  // Yields to the controls beside it rather than pushing them out.
+  min-width: 0;
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;

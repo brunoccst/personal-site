@@ -7,6 +7,7 @@ import { useSectionNavigation } from '../../hooks/useSectionNavigation';
 import { Brand } from '../Brand/Brand';
 import { ContentPanel } from '../ContentPanel/ContentPanel';
 import { SideNav } from '../SideNav/SideNav';
+import { SystemControls } from '../SystemControls/SystemControls';
 import styles from './Layout.module.scss';
 
 // The framed page: heading, side navigation and the section content.
@@ -36,15 +37,20 @@ export function Layout() {
     enabled: true,
   });
 
+  // The tab title stays the name alone; the section is announced by the live
+  // region below instead.
   useEffect(() => {
-    document.title = t('a11y.pageTitle', { section: sectionLabel });
-  }, [t, sectionLabel]);
+    document.title = t('identity.name');
+  }, [t]);
 
   return (
     <>
       <main className={styles.frame}>
         <div className={styles.inner}>
-          <Brand />
+          <div className={styles.header}>
+            <Brand />
+            <SystemControls />
+          </div>
 
           <div className={styles.body}>
             <SideNav />

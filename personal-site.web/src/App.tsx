@@ -4,7 +4,6 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { Intro } from './components/Intro/Intro';
 import { Layout } from './components/Layout/Layout';
-import { SystemControls } from './components/SystemControls/SystemControls';
 import { DEFAULT_SECTION, SECTIONS, type SectionId } from './config/sections';
 import AboutSection from './sections/AboutSection';
 import ExperienceSection from './sections/ExperienceSection';
@@ -38,8 +37,6 @@ export default function App() {
           <a className="skip-link" href="#content">
             {t('a11y.skipToContent')}
           </a>
-
-          <SystemControls />
 
           <Routes>
             <Route path="/" element={<Navigate to={DEFAULT_SECTION.path} replace />} />

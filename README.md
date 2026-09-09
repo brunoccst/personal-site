@@ -195,8 +195,13 @@ Import a shared file with `@use`:
 
 ### Themes
 
-The light theme uses a warm off-white background with a muted bronze accent. The
-dark theme uses a pure black background with a soft gold accent.
+The light theme is a sunny sky: a blue background with soft white patches and a
+deep sky-blue accent. The dark theme is deep space: a near-black blue with two
+distant coloured glows and a starlight-gold accent.
+
+Both backgrounds are `radial-gradient` layers held in a single `--celestial`
+custom property and painted on one fixed pseudo-element behind the page. The
+frame is translucent, so that background shows through it.
 
 `theme/AppThemeProvider.tsx` writes the current mode onto the `<html>` element as
 `data-theme="light"` or `data-theme="dark"`. `_tokens.scss` defines the light

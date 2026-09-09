@@ -25,8 +25,7 @@
   "a11y": {
     "skipToContent": "Skip to content",
     "opensInNewTab": "(opens in a new tab)",
-    "sectionAnnouncement": "{{section}} section",
-    "pageTitle": "{{section}} — Bruno Carvalho da Costa"
+    "sectionAnnouncement": "{{section}} section"
   },
   "sections": {
     "about": {

@@ -159,20 +159,27 @@ The brief calls the content container a square. It is a bordered box inset from
 the viewport edges, and its proportions follow the window. See
 [DECISIONS.md](DECISIONS.md) for why.
 
-### `--frame-inset-top` couples two things
-
-The top inset has to be tall enough for the system controls that sit above the
-frame. If the buttons are ever made larger, the token has to be raised by hand
-or the controls will overlap the frame border. Nothing enforces the
-relationship.
-
 ### The control alignment depends on a duplicated padding value
 
 The last control's negative right margin has to equal the button's own padding
-for the icon to line up with the frame border. The padding is set in the MUI
+for the icon to line up with the text below it. The padding is set in the MUI
 theme and the margin in the stylesheet, both as `var(--space-2)`. They agree
 today because they name the same token, but nothing fails if one is changed
 alone.
+
+### The frame depends on `backdrop-filter`
+
+The frame is translucent over the sky or the deep-space glows, and relies on
+`backdrop-filter` to blur what sits behind the text. A browser without it — or
+with it disabled for performance — shows the background unblurred through the
+frame. Text still clears AA against the composited colour, but the brighter
+patches sit directly behind the prose.
+
+### The heading and the controls share one row with no wrap
+
+The frame's header is a flex row: heading left, controls right. The heading is
+allowed to shrink and wrap, but at a very narrow width with a long enough
+translated role, the two could still meet. Nothing enforces a minimum gap.
 
 ### Entrance animations leave elements invisible while paused
 

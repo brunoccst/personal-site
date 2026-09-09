@@ -1,14 +1,11 @@
 @use '../../styles/mixins' as m;
 @use '../../styles/variables' as v;
 
-// The square: fixed to the viewport, inset on every side. The top inset is
-// larger because the system controls sit in that band.
+// The square: fixed to the viewport, inset equally on every side. Its
+// background is translucent, so the sky or the starfield carries through it.
 .frame {
   position: fixed;
-  top: var(--frame-inset-top);
-  right: var(--frame-inset);
-  bottom: var(--frame-inset);
-  left: var(--frame-inset);
+  inset: var(--frame-inset);
   z-index: v.$z-frame;
   max-width: var(--frame-max-width);
   margin-inline: auto;
@@ -16,6 +13,7 @@
   flex-direction: column;
   overflow: hidden;
   background-color: var(--color-bg-elevated);
+  backdrop-filter: blur(14px);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   opacity: 0;
@@ -23,6 +21,14 @@
   transition:
     background-color var(--duration-base) ease,
     border-color var(--duration-base) ease;
+}
+
+// Heading on the left, system controls on the right.
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
 }
 
 .inner {

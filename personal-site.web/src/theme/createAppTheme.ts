@@ -11,7 +11,7 @@ export function createAppTheme(mode: ThemeMode): Theme {
       mode,
       background: {
         default: 'var(--color-bg)',
-        paper: 'var(--color-bg-elevated)',
+        paper: 'var(--color-surface)',
       },
       text: {
         primary: 'var(--color-text)',
@@ -47,14 +47,14 @@ export function createAppTheme(mode: ThemeMode): Theme {
         defaultProps: { arrow: true, enterDelay: 400 },
         styleOverrides: {
           tooltip: {
-            backgroundColor: 'var(--color-bg-elevated)',
+            backgroundColor: 'var(--color-surface)',
             color: 'var(--color-text)',
             border: '1px solid var(--color-border)',
             fontSize: 'var(--text-xs)',
             letterSpacing: '0.02em',
             padding: '6px 10px',
           },
-          arrow: { color: 'var(--color-bg-elevated)' },
+          arrow: { color: 'var(--color-surface)' },
         },
       },
     },
