@@ -23,6 +23,17 @@ body,
   height: 100%;
 }
 
+// The sky or the starfield, fixed behind everything and never interactive.
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: var(--celestial);
+  background-repeat: no-repeat;
+}
+
 body {
   background-color: var(--color-bg);
   color: var(--color-text);

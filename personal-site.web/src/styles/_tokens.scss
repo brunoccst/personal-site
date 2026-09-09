@@ -2,21 +2,32 @@
 // overrides the colours that differ.
 
 :root {
-  // --- Light theme: warm off-white background ---
+  // --- Light theme: a bright sky on a sunny day ---
   color-scheme: light;
 
-  --color-bg: #f0ede7;
-  --color-bg-elevated: #fbf9f6;
-  --color-bg-sunken: #e8e4dc;
-  --color-border: rgb(35 37 41 / 12%);
-  --color-border-strong: rgb(35 37 41 / 26%);
-  --color-text: #232529;
-  --color-text-muted: #5b5f66;
-  --color-text-faint: #6b7079;
-  --color-accent: #8c6239;
-  --color-accent-contrast: #fbf9f6;
-  --color-accent-soft: rgb(140 98 57 / 12%);
-  --color-focus: #7a5430;
+  --color-bg: #bcd9f5;
+  --color-bg-elevated: rgb(255 255 255 / 58%);
+  // Opaque stand-in for the frame colour, for surfaces that must not show
+  // what is behind them.
+  --color-surface: #e3effb;
+  --color-border: rgb(16 35 58 / 14%);
+  --color-border-strong: rgb(16 35 58 / 30%);
+  --color-text: #10233a;
+  --color-text-muted: #3d5875;
+  --color-text-faint: #526b88;
+  --color-accent: #14548f;
+  --color-accent-contrast: #f2f8fe;
+  --color-accent-soft: rgb(20 84 143 / 12%);
+  --color-focus: #14548f;
+
+  // Sunlight and a few soft white patches. Deliberately shapeless: the brief
+  // asked for the suggestion of cloud, not drawn clouds.
+  --celestial:
+    radial-gradient(26vmax 26vmax at 88% 4%, rgb(255 248 214 / 62%), transparent 62%),
+    radial-gradient(38vmax 26vmax at 18% 14%, rgb(255 255 255 / 55%), transparent 64%),
+    radial-gradient(30vmax 22vmax at 80% 30%, rgb(255 255 255 / 40%), transparent 62%),
+    radial-gradient(44vmax 30vmax at 60% 98%, rgb(255 255 255 / 48%), transparent 66%),
+    radial-gradient(24vmax 18vmax at 4% 74%, rgb(255 255 255 / 36%), transparent 62%);
 
   // --- Spacing scale ---
   --space-1: 0.25rem;
@@ -54,10 +65,9 @@
   --tracking-wider: 0.16em;
 
   // --- Frame geometry ---
-  // The top inset is larger than the others: it is the band that holds the
-  // system controls sitting outside the frame.
+  // The inset is the same on all four sides: the system controls now sit
+  // inside the frame, so the top no longer needs a band of its own.
   --frame-inset: clamp(0.875rem, 3.2vmin, 2.75rem);
-  --frame-inset-top: clamp(3.25rem, 4vmin + 2.25rem, 5rem);
   --frame-padding: clamp(1.125rem, 3vmin, 2.75rem);
   --frame-max-width: 1440px;
 
@@ -71,19 +81,35 @@
 }
 
 [data-theme='dark'] {
-  // --- Dark theme: pure black background ---
+  // --- Dark theme: deep space ---
   color-scheme: dark;
 
-  --color-bg: #000000;
-  --color-bg-elevated: #0a0b0c;
-  --color-bg-sunken: #000000;
-  --color-border: rgb(255 255 255 / 8%);
-  --color-border-strong: rgb(255 255 255 / 18%);
-  --color-text: #f4f4f5;
-  --color-text-muted: #9b9ba3;
-  --color-text-faint: #828289;
-  --color-accent: #d8b878;
-  --color-accent-contrast: #000000;
-  --color-accent-soft: rgb(216 184 120 / 12%);
-  --color-focus: #ecd6a4;
+  --color-bg: #05080f;
+  --color-bg-elevated: rgb(16 26 51 / 72%);
+  --color-surface: #0d1529;
+  --color-border: rgb(255 255 255 / 10%);
+  --color-border-strong: rgb(255 255 255 / 22%);
+  --color-text: #e9edf7;
+  --color-text-muted: #a3aec5;
+  --color-text-faint: #8590a8;
+  --color-accent: #f0c878;
+  --color-accent-contrast: #05080f;
+  --color-accent-soft: rgb(240 200 120 / 14%);
+  --color-focus: #f0c878;
+
+  // A scattering of stars and two distant glows. Kept sparse so the page
+  // stays quiet behind the text.
+  --celestial:
+    radial-gradient(1.6px 1.6px at 14% 18%, rgb(255 255 255 / 85%), transparent 100%),
+    radial-gradient(1.2px 1.2px at 27% 62%, rgb(255 255 255 / 60%), transparent 100%),
+    radial-gradient(1.8px 1.8px at 41% 11%, rgb(255 255 255 / 75%), transparent 100%),
+    radial-gradient(1.1px 1.1px at 57% 79%, rgb(255 255 255 / 55%), transparent 100%),
+    radial-gradient(2.1px 2.1px at 72% 29%, rgb(240 200 120 / 90%), transparent 100%),
+    radial-gradient(1.3px 1.3px at 86% 66%, rgb(255 255 255 / 70%), transparent 100%),
+    radial-gradient(1.5px 1.5px at 92% 21%, rgb(255 255 255 / 60%), transparent 100%),
+    radial-gradient(1px 1px at 8% 83%, rgb(255 255 255 / 50%), transparent 100%),
+    radial-gradient(1.4px 1.4px at 34% 90%, rgb(255 255 255 / 55%), transparent 100%),
+    radial-gradient(1.2px 1.2px at 64% 48%, rgb(255 255 255 / 45%), transparent 100%),
+    radial-gradient(62vmax 62vmax at 78% -12%, rgb(46 74 150 / 24%), transparent 62%),
+    radial-gradient(54vmax 54vmax at 8% 110%, rgb(78 52 140 / 20%), transparent 60%);
 }

@@ -34,7 +34,11 @@ $reach-neg: -$reach;
   display: grid;
   place-items: center;
   padding: var(--space-6);
+  // Opaque, so it hides the page mounting behind it, but carrying the same
+  // sky or starfield rather than a flat fill.
   background-color: var(--color-bg);
+  background-image: var(--celestial);
+  background-repeat: no-repeat;
   overflow: hidden;
 
   &[data-phase='exit'] {

@@ -1,18 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="BC">
-  <rect width="64" height="64" rx="12" fill="#000000" />
-  <g
-    fill="none"
-    stroke="#d8b878"
-    stroke-width="5"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  >
-    <!-- B with no stem at all. The three flat terminals stay aligned on the
-         left, so the missing vertical is implied rather than drawn. -->
-    <path d="M12 17 H20 C26 17, 28 20, 28 24 C28 28, 26 31.5, 20 31.5 H12" />
-    <path d="M12 31.5 H21 C27 31.5, 29 35, 29 39 C29 43, 27 47, 21 47 H12" />
-    <!-- C as an elliptical arc, ry matched to the B's half-height so both
-         letters span exactly y17 to y47 -->
-    <path d="M52.16 19.71 A9 15 0 1 0 52.16 44.29" />
+  <rect width="64" height="64" rx="12" fill="#05080f" />
+  <g fill="none" stroke="#f0c878" stroke-width="4" stroke-linecap="butt">
+    <!-- C underneath, matched to the B's height and overlapping its bowls -->
+    <path d="M48.6 19.71 A15 15 0 1 0 48.6 44.29" />
+    <!-- The B is drawn twice: once in the background colour, cutting a narrow
+         channel where it crosses the C, then in the accent on top -->
+    <g stroke="#05080f" stroke-width="7">
+      <path d="M9 16 V48" />
+      <path d="M9 16 H18 A8 8 0 0 1 18 32 H9" />
+      <path d="M9 32 H19 A8 8 0 0 1 19 48 H9" />
+    </g>
+    <path d="M9 16 V48" />
+    <path d="M9 16 H18 A8 8 0 0 1 18 32 H9" />
+    <path d="M9 32 H19 A8 8 0 0 1 19 48 H9" />
   </g>
 </svg>

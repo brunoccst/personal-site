@@ -1,34 +1,21 @@
 @use '../../styles/mixins' as m;
 @use '../../styles/variables' as v;
 
-// Spans the same width as the frame and caps at the same maximum, so the last
-// button's edge lines up with the frame's right border on any viewport.
+// Sits inside the frame, in the top-right corner of its padding box.
 .controls {
-  position: fixed;
-  top: var(--frame-inset);
-  right: var(--frame-inset);
-  left: var(--frame-inset);
-  z-index: v.$z-controls;
-  max-width: var(--frame-max-width);
-  margin-inline: auto;
+  flex: none;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
   gap: var(--space-1);
-  height: calc(var(--frame-inset-top) - var(--frame-inset) - var(--space-2));
-  // Only the buttons should take pointer events; the strip itself sits over
-  // the page background.
-  pointer-events: none;
   opacity: 0;
-  animation: controls-in var(--duration-slow) v.$ease-out 120ms forwards;
+  animation: controls-in var(--duration-slow) v.$ease-out 200ms forwards;
 }
 
 .button {
   gap: var(--space-1);
-  pointer-events: auto;
 
   // Cancels the button's own padding so the icon, not the hit area, lines up
-  // with the frame border.
+  // with the right edge of the content below it.
   &:last-of-type {
     margin-right: calc(var(--space-2) * -1);
   }
