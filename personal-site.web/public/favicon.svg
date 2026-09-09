@@ -1,17 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="BC">
   <rect width="64" height="64" rx="12" fill="#05080f" />
+
+  <!-- A large C wrapping the B. Its spine runs behind the B, so only the top,
+       right and bottom of it come out the other side. -->
+  <path
+    d="M44.71 17.88 A19 19 0 1 0 44.71 46.12"
+    fill="none"
+    stroke="#f0c878"
+    stroke-width="4"
+  />
+
+  <!-- The B's silhouette in the background colour, filled rather than only
+       stroked: without the fill, the C's spine shows through the counters. -->
+  <g fill="#05080f" stroke="#05080f" stroke-width="7" stroke-linejoin="round">
+    <path d="M14 17 H22 A7.5 7.5 0 0 1 22 32 H14 Z" />
+    <path d="M14 32 H23 A7.5 7.5 0 0 1 23 47 H14 Z" />
+  </g>
+
+  <!-- The letter itself, on top -->
   <g fill="none" stroke="#f0c878" stroke-width="4" stroke-linecap="butt">
-    <!-- C underneath, matched to the B's height and overlapping its bowls -->
-    <path d="M48.6 19.71 A15 15 0 1 0 48.6 44.29" />
-    <!-- The B is drawn twice: once in the background colour, cutting a narrow
-         channel where it crosses the C, then in the accent on top -->
-    <g stroke="#05080f" stroke-width="7">
-      <path d="M9 16 V48" />
-      <path d="M9 16 H18 A8 8 0 0 1 18 32 H9" />
-      <path d="M9 32 H19 A8 8 0 0 1 19 48 H9" />
-    </g>
-    <path d="M9 16 V48" />
-    <path d="M9 16 H18 A8 8 0 0 1 18 32 H9" />
-    <path d="M9 32 H19 A8 8 0 0 1 19 48 H9" />
+    <path d="M14 17 V47" />
+    <path d="M14 17 H22 A7.5 7.5 0 0 1 22 32 H14" />
+    <path d="M14 32 H23 A7.5 7.5 0 0 1 23 47 H14" />
   </g>
 </svg>
