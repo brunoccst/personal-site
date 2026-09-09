@@ -196,8 +196,8 @@ Import a shared file with `@use`:
 ### Themes
 
 The light theme is a sunny sky: a blue background with soft white patches and a
-deep sky-blue accent. The dark theme is deep space: a near-black blue with a
-scattering of stars and a starlight-gold accent.
+deep sky-blue accent. The dark theme is deep space: a near-black blue with two
+distant coloured glows and a starlight-gold accent.
 
 Both backgrounds are `radial-gradient` layers held in a single `--celestial`
 custom property and painted on one fixed pseudo-element behind the page. The

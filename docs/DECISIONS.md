@@ -167,9 +167,16 @@ the controls for the duration of the animation.
 ### Deep space and a sunny sky
 
 The two themes are the same view at two times of day. Dark is deep space: a
-near-black blue (`#05080f`), a scattering of stars and two distant coloured
-glows. Light is the sky seen from the ground on a clear day: a real blue
-(`#bcd9f5`) with soft white patches and one warm patch of sun.
+near-black blue (`#05080f`) with two distant coloured glows. Light is the sky
+seen from the ground on a clear day: a real blue (`#bcd9f5`) with soft white
+patches and one warm patch of sun.
+
+Neither has any discrete object in it. A scattering of individual stars was
+tried in the dark theme and removed: at a pixel or two across they read as dust
+on the screen rather than as depth, and they competed with the text for
+attention every time the eye passed over them. What survives in both themes is
+the same idea — large, soft, shapeless washes of light — which is also what
+keeps the two themes recognisably one design.
 
 Both are drawn entirely with `radial-gradient` layers collected in a single
 `--celestial` custom property and painted on one fixed pseudo-element behind
@@ -181,7 +188,7 @@ for the suggestion of cloud rather than drawn clouds, and soft-edged blobs read
 as light and haze where a cloud outline would read as an illustration.
 
 The frame is translucent over that background rather than opaque, so the sky and
-the stars carry through the whole page instead of being trapped in a thin margin
+the glows carry through the whole page instead of being trapped in a thin margin
 around it. A `backdrop-filter` blur stops whatever sits behind the text from
 competing with it.
 

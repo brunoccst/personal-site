@@ -97,19 +97,10 @@
   --color-accent-soft: rgb(240 200 120 / 14%);
   --color-focus: #f0c878;
 
-  // A scattering of stars and two distant glows. Kept sparse so the page
-  // stays quiet behind the text.
+  // Two distant glows and nothing else. Individual stars were tried and
+  // dropped: at a pixel or two across they read as dust on the screen rather
+  // than as depth.
   --celestial:
-    radial-gradient(1.6px 1.6px at 14% 18%, rgb(255 255 255 / 85%), transparent 100%),
-    radial-gradient(1.2px 1.2px at 27% 62%, rgb(255 255 255 / 60%), transparent 100%),
-    radial-gradient(1.8px 1.8px at 41% 11%, rgb(255 255 255 / 75%), transparent 100%),
-    radial-gradient(1.1px 1.1px at 57% 79%, rgb(255 255 255 / 55%), transparent 100%),
-    radial-gradient(2.1px 2.1px at 72% 29%, rgb(240 200 120 / 90%), transparent 100%),
-    radial-gradient(1.3px 1.3px at 86% 66%, rgb(255 255 255 / 70%), transparent 100%),
-    radial-gradient(1.5px 1.5px at 92% 21%, rgb(255 255 255 / 60%), transparent 100%),
-    radial-gradient(1px 1px at 8% 83%, rgb(255 255 255 / 50%), transparent 100%),
-    radial-gradient(1.4px 1.4px at 34% 90%, rgb(255 255 255 / 55%), transparent 100%),
-    radial-gradient(1.2px 1.2px at 64% 48%, rgb(255 255 255 / 45%), transparent 100%),
-    radial-gradient(62vmax 62vmax at 78% -12%, rgb(46 74 150 / 24%), transparent 62%),
-    radial-gradient(54vmax 54vmax at 8% 110%, rgb(78 52 140 / 20%), transparent 60%);
+    radial-gradient(62vmax 62vmax at 78% -12%, rgb(46 74 150 / 26%), transparent 62%),
+    radial-gradient(54vmax 54vmax at 8% 110%, rgb(78 52 140 / 22%), transparent 60%);
 }

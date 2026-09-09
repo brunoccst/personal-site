@@ -169,11 +169,11 @@ alone.
 
 ### The frame depends on `backdrop-filter`
 
-The frame is translucent over the sky or the starfield, and relies on
+The frame is translucent over the sky or the deep-space glows, and relies on
 `backdrop-filter` to blur what sits behind the text. A browser without it — or
 with it disabled for performance — shows the background unblurred through the
-frame. Text still clears AA against the composited colour, but stars and cloud
-edges sit directly behind the prose.
+frame. Text still clears AA against the composited colour, but the brighter
+patches sit directly behind the prose.
 
 ### The heading and the controls share one row with no wrap
 
