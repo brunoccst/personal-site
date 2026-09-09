@@ -19,7 +19,6 @@
 
   <!-- The letter itself, on top -->
   <g fill="none" stroke="#f0c878" stroke-width="4" stroke-linecap="butt">
-    <path d="M14 17 V47" />
     <path d="M14 17 H22 A7.5 7.5 0 0 1 22 32 H14" />
     <path d="M14 32 H23 A7.5 7.5 0 0 1 23 47 H14" />
   </g>
